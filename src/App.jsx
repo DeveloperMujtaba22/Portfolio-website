@@ -1,12 +1,13 @@
 import React from 'react'
+import Hero from './Sections/Hero'
+import NavBar from './Components/NavBar'
 
 const App = () => {
   return (
-    <main>
-        <div>
-            <h1>Welcome</h1>
-        </div>
-    </main>
+   <>
+        <NavBar/>
+      <Hero/>
+   </>
   )
 }
 
