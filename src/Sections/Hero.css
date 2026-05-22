@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap');
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+
+/* ── Big heading ── */
+.hero-big-text {
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+}
+
+.hero-big-text h1 {
+  font-size: clamp(2.2rem, 8vw, 5.6rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.1;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.hero-big-text h2 {
+  font-size: clamp(1.8rem, 7vw, 5.9rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #f4845f;
+}
+
+/* ── Center image — bigger, starts higher ── */
+.hero-image-wrap {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-orange-circle {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  width: 560px;   /* was 450px */
+  height: 560px;  /* was 450px */
+  background-color: #f4845f;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  height: 85vh;         /* was 60vh / 70vh — this is the key fix */
+  max-height: 860px;    /* was 700-780px */
+  min-height: 600px;    /* was 500-550px */
+  width: auto;
+  object-fit: contain;
+  object-position: top center;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.15));
+}
+
+/* ── Hello badge ── */
+/* ── Hello badge ── */
+.hero-hello-badge {
+  position: absolute;
+  top: 130px;
+  left: 48%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 50px;
+  padding: 6px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  z-index: 10;
+  white-space: nowrap;
+  animation: badgeFloat 3s ease-in-out infinite; /* float up/down */
+}
+
+/* Sparkle dot — top-right of badge */
+.badge-sparkle {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  font-size: 14px;
+  color: #f4845f;
+  animation: sparkleSpin 2s ease-in-out infinite;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Badge gently floats */
+@keyframes badgeFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* Sparkle pulses in scale */
+@keyframes sparkleSpin {
+  0%, 100% { transform: scale(1) rotate(0deg);   opacity: 1; }
+  50%       { transform: scale(1.4) rotate(20deg); opacity: 0.7; }
+}
+
+/* ── Left quote card — bottom left ── */
+.hero-quote-card {
+  position: absolute;
+  left: clamp(24px, 6vw, 100px);
+  bottom: clamp(120px, 18vh, 200px);
+  max-width: 200px;
+  z-index: 5;
+}
+
+.quote-icon {
+  font-size: 2rem;
+  color: #999;
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hero-quote-card p {
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Right experience card — bottom right ── */
+.hero-exp-card {
+  position: absolute;
+  right: clamp(24px, 6vw, 100px);
+  bottom: clamp(120px, 18vh, 200px);
+  text-align: right;
+  z-index: 5;
+}
+
+.stars {
+  color: #f4845f;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.exp-number {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.exp-label {
+  font-size: 13px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* ── Buttons — sit on top of photo bottom ── */
+.hero-buttons {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Dark pill that wraps both buttons */
+/* Dark pill that wraps both buttons */
+.btn-pill-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);  /* translucent instead of solid dark */
+  backdrop-filter: blur(12px);             /* frosted glass blur */
+  -webkit-backdrop-filter: blur(12px);     /* Safari support */
+  border: 1.5px solid rgba(255, 255, 255, 0.4); /* light border */
+  border-radius: 50px;
+  padding: 5px;
+  gap: 0;
+}
+
+/* Orange filled button — left side */
+.btn-portfolio {
+  background: linear-gradient(135deg, #f4845f, #e8623a);
+  color: #fff;
+  padding: 11px 28px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-portfolio:hover { opacity: 0.88; }
+
+/* Plain text button — right side inside dark pill */
+.btn-hire {
+  background: transparent;
+  color: #1a1a1a;        /* dark text — was #fff */
+  padding: 11px 24px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-hire:hover { opacity: 0.7; }
+/* ── Feedback ── */
+.hero-feedback {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.btn-feedback {
+  background: #1a1a24;
+  color: #fff;
+  padding: 10px 46px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.feedback-star{
+    color: #f4845f;
+    margin-right: 6px;  
+}
+
+.btn-feedback:hover { opacity: 0.85; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-big-text h1 { font-size: 1.7rem; white-space: normal; }
+  .hero-big-text h2 { font-size: 1.4rem; }
+  .hero-photo { height: 60vh; }
+  .hero-orange-circle { width: 260px; height: 260px; }
+  .hero-quote-card,
+  .hero-exp-card { display: none; }
+}
