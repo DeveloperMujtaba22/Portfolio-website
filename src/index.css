@@ -2,8 +2,10 @@
 
 html, body{
   width: 100vw;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   color: white;
+   overflow-x: hidden; /* ← stops horizontal scroll from blobs */
+  margin: 0;
 }
 
 @theme {

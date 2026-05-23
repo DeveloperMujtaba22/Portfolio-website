@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
 
+.service-wrapper {
+  border-radius: 80px;
+  overflow: hidden;
+  margin: 0;
+  background-color: #0d0d14;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .service-section {
   position: relative;
-  background: #0d0d0f;
   min-height: 100vh;
   padding: 80px 60px;
   font-family: 'Outfit', sans-serif;
@@ -10,7 +18,23 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
   gap: 48px;
+  /* ← remove background-image from here */
+}
+
+/* Blurred background via pseudo-element */
+.service-section::before {
+  content: '';
+  position: absolute;
+  inset: -20px; /* slightly larger to hide blur edges */
+  background-image: url('assets/service-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px); /* ← adjust blur amount here */
+  z-index: 0;
 }
 
 .service-blob {
@@ -54,7 +78,7 @@
   z-index: 2;
 }
 
-/* ── Header ── */
+/* Header */
 .service-header {
   display: flex;
   align-items: flex-start;
@@ -63,11 +87,12 @@
 }
 
 .service-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(3rem, 6vw, 4rem);
   font-weight: 800;
   color: #fff;
   margin: 0;
   white-space: nowrap;
+  margin-top: -30px;
 }
 
 .service-highlight {
@@ -82,113 +107,170 @@
   margin: 6px 0 0;
 }
 
-/* ── Cards ── */
+/* Cards */
 .service-cards {
   display: flex;
-  gap: 20px;
+  gap: 80px;
 }
 
-/* The card is just a rounded border container — NO backdrop-filter here */
 .service-card {
   flex: 1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
+  border-radius: 24px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 2;
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(29px);           
+  /* -webkit-backdrop-filter: blur(12px); */   /* ← comment out */
+  /* border: 1.5px solid rgba(255, 255, 255, 0.4); */ /* ← remove or keep subtle */
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(244, 132, 95, 0.5);
+  box-shadow: 0 20px 60px rgba(244, 132, 95, 0.15);
 }
 
-/* Title sits on top with its OWN blur background — not the whole card */
+/* Title at top */
 .service-card-title {
-  position: relative;
-  z-index: 3;
-  font-size: 16px;
+  font-size: 35px;
   font-weight: 700;
   color: #fff;
   display: block;
-  padding: 18px 18px 14px;
-  background: rgba(10, 10, 14, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Image fills the card */
-.service-card-img-wrap {
-  width: 100%;
+  padding: 22px 22px 18px;
+  background: #151516; /* ← solid dark, no blur */
   position: relative;
-  font-size: 0;
-  line-height: 0;
+  z-index: 3;
+  margin-bottom: -1px;
+  /* Remove these if present: */
+  /* backdrop-filter: none; */
+  /* -webkit-backdrop-filter: none; */
+  /* background: rgba(...) ← remove any rgba with opacity */
 }
 
-/* Image fills the card — no gap */
+
+
+/* Image wrapper — dark bg to prevent edge bleed */
+.service-card-img-wrap {
+  flex: 1;
+  position: relative;
+  margin: 10px;
+  padding: 16px;        /* ← breathing room all around */
+  overflow: hidden;
+  border-radius: 0 0 22px 22px;
+  background: #fdfdfd;  /* ← white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height:20px;    /* ← controls the white area height */
+}
+
 .service-card-img {
-  width: 100%;
-  height: 280px;
+  width: 100%;           /* ← image smaller than wrap */
+  height: 290px;        /* ← medium size */
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
-  border-radius: 0 0 18px 18px;
-  background: #0d0d0f;
-  vertical-align: bottom;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  animation: imageFloat 4s ease-in-out infinite;
 }
 
-/* Arrow pointing ↗ correctly */
+@keyframes imageFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+/* Arrow */
 .service-card-arrow {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 4;
-  width: 46px;
-  height: 46px;
-  background: #1a1a2e;
+  bottom: 12px;
+  right: 15px;
+  z-index: 9;
+  width: 78px;
+  height: 78px;
+  background: #0d0d14;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 22px;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: background 0.2s;
-  transform: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.service-card-arrow::after {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'/%3E%3Cpolyline points='7 7 17 7 17 17'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.2s;
 }
 
 .service-card-arrow:hover {
   background: #f4845f;
 }
 
-/* ── Dots ── */
-.service-dots {
+.service-card-arrow:hover::after {
+  transform: rotate(45deg);
+}
+
+/* Dots */
+.service-dots-track {
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+}
+
+.service-dot-pill {
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 10px;
+  background: #f4845f;
+  border-radius: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+  transition: left 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+              width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .service-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  position: relative;
+  z-index: 2;
   border: none;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  transition: background 0.2s, width 0.3s;
   padding: 0;
+  /* size set inline via style prop */
+  transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+              height 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.service-dot--active {
-  background: #f4845f;
-  width: 28px;
-  border-radius: 10px;
+.service-dot--active { background: transparent; }
+
+/* sparkle on active */
+.service-dot--active::after {
+  content: '✦';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #f4845f;
+  pointer-events: none;
+  animation: sparklePulse 2s ease-in-out infinite;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 768px) {
   .service-section {
     padding: 60px 24px;
