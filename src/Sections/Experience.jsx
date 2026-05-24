@@ -35,9 +35,12 @@ const Experience = () => {
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisible(prev => [...new Set([...prev, i])]);
+          } else {
+            // scroll up — hide again for re-animation
+            setVisible(prev => prev.filter(v => v !== i));
           }
         },
-        { threshold: 0.25 }
+        { threshold: 0.2 }
       );
       if (el) obs.observe(el);
       return obs;
@@ -47,8 +50,6 @@ const Experience = () => {
 
   return (
     <section id="experience" className="exp-section">
-
-      {/* Background blobs */}
       <div className="exp-blob exp-blob--tl" />
       <div className="exp-blob exp-blob--br" />
 
@@ -70,7 +71,17 @@ const Experience = () => {
           >
             {/* Left */}
             <div className="exp-left">
-              <p className="exp-company">{exp.company}</p>
+              <p className="exp-company">
+                {exp.company.split('').map((char, ci) => (
+                  <span
+                    key={ci}
+                    className="exp-company-char"
+                    style={{ animationDelay: `${ci * 0.04}s` }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
+              </p>
               <p className="exp-period">{exp.period}</p>
             </div>
 

@@ -4,6 +4,8 @@ import NavBar from './Components/NavBar'
 import Service from './Sections/Service'
 import Skill from './Sections/Skill'
 import Experience from './Sections/Experience'
+import WhyHire from './Sections/WhyHire'
+  
 
 
 const App = () => {
@@ -14,6 +16,7 @@ const App = () => {
       <Service/>
       <Skill/>
       <Experience/>
+      <WhyHire/>
    </>
   )
 }
