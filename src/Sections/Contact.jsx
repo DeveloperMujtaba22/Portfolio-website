@@ -67,7 +67,7 @@ const Contact = () => {
             {[...ticker, ...ticker, ...ticker].map((item, i) => (
               <span className="contact-ticker-item" key={i}>
                 {item}
-                <span className="contact-ticker-sep">◆</span>
+                <span className="contact-ticker-sep">◆ </span>
               </span>
             ))}
           </div>
