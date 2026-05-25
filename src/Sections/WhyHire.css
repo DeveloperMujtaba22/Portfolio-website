@@ -53,7 +53,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 17px;
   opacity: 0;
   transform: translateX(80px);
   filter: blur(6px);
@@ -80,7 +80,9 @@
   font-size: clamp(4rem, 8vw, 7rem);    /* ← much bigger */
   color: #111;
   display: block;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+  margin-bottom: 
+  -20px;
 }
 
 
@@ -89,10 +91,11 @@
   font-style: italic;
   color: #f4845f;
   text-shadow:
-    2px  2px 0 #111,
-   -1px -1px 0 #111,
-    1px -1px 0 #111,
-   -1px  1px 0 #111;
+    1px 1px 0 #c0392b,
+    2px 2px 0 #c0392b,
+    3px 3px 0 #c0392b,
+    4px 4px 0 #8b2500,
+    5px 5px 8px rgba(0,0,0,0.3);
   letter-spacing: 3px;
 }
 
@@ -100,9 +103,10 @@
   font-size: clamp(4rem, 8vw, 7rem);
   font-style: italic;
   color: transparent;
-  -webkit-text-stroke: 2px #111;
+  -webkit-text-stroke: 2.5px #111;
   text-shadow:
-    3px 3px 0 rgba(244,132,95,0.4);
+    2px 2px 0 rgba(244,132,95,0.5),
+    4px 4px 0 rgba(244,132,95,0.2);
   letter-spacing: 3px;
 }
 
@@ -140,7 +144,7 @@
 }
 
 .wh-stat-label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   color: #999;
   letter-spacing: 2.5px;
@@ -149,12 +153,14 @@
 /* ─── Button ──────────────────────────────────────────── */
 .wh-btn {
   display: inline-block;
-  padding: 20px 56px;
+  padding: 20px 90px;
   border: 2px solid #111;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 700;
+  border-radius: 20px;
+  font-size: 17px;
+  font-weight: 900;
   letter-spacing: 2.5px;
+
+  margin-top: 30px;
   color: #111;
   text-decoration: none;
   width: fit-content;

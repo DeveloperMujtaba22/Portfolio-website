@@ -1,0 +1,271 @@
+ @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+/* ─── Section ─────────────────────────────────────────── */
+.proj-section {
+  background: #f0eeea;
+  padding: 100px 80px;
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+.proj-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.proj-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #f4845f;
+  margin: 0 0 12px;
+}
+
+.proj-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.proj-highlight {
+  color: #f4845f;
+  font-style: italic;
+}
+
+/* ─── See All button ──────────────────────────────────── */
+.proj-see-all {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 16px 40px;
+  background: #f4845f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proj-see-all:hover {
+  background: #c0392b;
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px rgba(244, 132, 95, 0.4);
+}
+
+/* ─── Grid ────────────────────────────────────────────── */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ─── Card ────────────────────────────────────────────── */
+/* ─── Card cursor + bottom orange half hover ─────────── */
+.proj-card {
+  border-radius: 28px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(6px);
+  cursor: pointer;
+  background: transparent;
+  position: relative;          /* ← needed for ::after */
+  transition:
+    opacity    0.7s ease,
+    transform  0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter     0.7s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Orange bottom half slides up on hover */
+.proj-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;                 /* ← half the card */
+  background: linear-gradient(
+    to top,
+    rgba(244, 132, 95, 0.85) 0%,
+    rgba(244, 132, 95, 0.3)  60%,
+    transparent              100%
+  );
+  opacity: 0;
+  transform: translateY(100%); /* ← starts below */
+  transition:
+    opacity   0.4s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 0 0 28px 28px;
+}
+
+.proj-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);    /* ← slides up into view */
+}
+
+.proj-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.proj-card:hover {
+  box-shadow: 0 24px 60px rgba(244, 132, 95, 0.25);
+  transform: translateY(-8px);
+}
+
+/* ─── Image ───────────────────────────────────────────── */
+.proj-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 320px;
+  border-radius: 28px;
+}
+
+.proj-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+.proj-card:hover .proj-card-img {
+  transform: scale(1.02);
+}
+
+/* ─── Overlay ─────────────────────────────────────────── */
+.proj-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 20, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  border-radius: 28px;
+  transition: opacity 0.3s ease;
+}
+
+.proj-card:hover .proj-card-overlay {
+  opacity: 1;
+}
+
+/* ─── Arrow button ────────────────────────────────────── */
+.proj-card-link {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f4845f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+  transform: scale(0.4) rotate(-45deg);
+  transition:
+    transform   0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background  0.3s ease;
+}
+
+.proj-card:hover .proj-card-link {
+  transform: scale(1) rotate(0deg);
+}
+
+.proj-card-link:hover {
+  background: #c0392b;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0px,   0px);  }
+  25%  { transform: translate(4px,  -8px);  }
+  50%  { transform: translate(0px,  -14px); }
+  75%  { transform: translate(-4px, -8px);  }
+  100% { transform: translate(0px,   0px);  }
+}
+
+.proj-card--visible:nth-child(1) { animation: drift 6s ease-in-out infinite 0s;   }
+.proj-card--visible:nth-child(2) { animation: drift 6s ease-in-out infinite 1.2s; }
+.proj-card--visible:nth-child(3) { animation: drift 6s ease-in-out infinite 2.4s; }
+
+
+/* ─── Dots ────────────────────────────────────────────── */
+.proj-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.proj-dot {
+  height: 10px;
+  border-radius: 50px;
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  padding: 0;
+  width: 10px;
+  transition:
+    width      0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.3s ease,
+    transform  0.3s ease;
+}
+
+/* Active — long line */
+.proj-dot--active {
+  background: #f4845f;
+  width: 40px;                  /* ← big line */
+  border-radius: 50px;
+  animation: slideExpand 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Inactive dots shrink when sibling is active */
+.proj-dots:has(.proj-dot--active) .proj-dot:not(.proj-dot--active) {
+  width: 8px;                   /* ← small */
+  background: rgba(0, 0, 0, 0.12);
+}
+
+@keyframes slideExpand {
+  0%   { width: 10px;  transform: scaleX(0.4) translateX(-10px); opacity: 0.5; }
+  40%  { width: 50px;  transform: scaleX(1.2) translateX(4px);   opacity: 1;   }
+  70%  { width: 36px;  transform: scaleX(0.95);                               }
+  100% { width: 40px;  transform: scaleX(1)   translateX(0);                  }
+}
+
+/* Hover on inactive */
+.proj-dot:not(.proj-dot--active):hover {
+  background: rgba(244, 132, 95, 0.45);
+  width: 14px;
+  transform: scale(1.2);
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .proj-section { padding: 80px 48px; }
+  .proj-grid    { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .proj-section       { padding: 60px 28px; gap: 40px; }
+  .proj-header        { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .proj-grid          { grid-template-columns: 1fr; gap: 24px; }
+  .proj-card-img-wrap { height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .proj-section  { padding: 50px 20px; }
+  .proj-see-all  { width: 100%; text-align: center; }
+}
