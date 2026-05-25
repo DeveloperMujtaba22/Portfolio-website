@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+/* ─── Section ─────────────────────────────────────────── */
+.contact-section {
+  background: #fff;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0 0;
+  overflow: hidden;
+  gap: 60px;
+}
+
+/* ─── CTA ─────────────────────────────────────────────── */
+.contact-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 0 40px;
+  text-align: center;
+}
+
+/* ─── Title ───────────────────────────────────────────── */
+.contact-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.contact-highlight {
+  color: #f4845f;
+}
+
+/* ─── Form ────────────────────────────────────────────── */
+.contact-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #f5f0eb;
+  border-radius: 50px;
+  padding: 8px 8px 8px 20px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.contact-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.contact-icon {
+  font-size: 16px;
+  color: #f4845f;
+  opacity: 0.7;
+}
+
+.contact-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  width: 100%;
+}
+
+.contact-input::placeholder {
+  color: #aaa;
+}
+
+.contact-btn {
+  flex-shrink: 0;
+  padding: 14px 36px;
+  background: #f4845f;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.contact-btn:hover {
+  background: #c0392b;
+  transform: scale(1.04);
+}
+
+/* ─── Badges ──────────────────────────────────────────── */
+.contact-badges {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-badge {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-icon {
+  color: #f4845f;
+}
+
+/* ─── Ticker wrapper ──────────────────────────────────── */
+.contact-ticker-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal orange borders */
+.contact-ticker-wrap::before,
+.contact-ticker-wrap::after {
+  content: '';
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  height: 3px;
+  background: #f4845f;
+  z-index: 2;
+}
+
+.contact-ticker-wrap::before {
+  top: 0;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+.contact-ticker-wrap::after {
+  bottom: 0;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+/* ─── Ticker ──────────────────────────────────────────── */
+.contact-ticker {
+  background: #fff;
+  padding: 20px 0;
+  transform: rotate(-1.5deg);
+  margin: 10px -5%;
+  width: 110%;
+  overflow: hidden;
+  border-top: 10px solid #f4845f;
+  border-bottom: 10px solid #f4845f;
+}
+
+.contact-ticker-items {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tickerScroll 20s linear infinite;
+}
+
+.contact-ticker:hover .contact-ticker-items {
+  animation-play-state: paused;
+}
+
+/* ─── Ticker item ─────────────────────────────────────── */
+.contact-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 800;
+  color: #111;
+  white-space: nowrap;
+  padding: 0 8px;
+  letter-spacing: 1px;
+  cursor: default;
+  transition: color 0.2s ease;
+}
+
+.contact-ticker-item:hover {
+  color: #f4845f;
+}
+
+.contact-ticker-sep {
+  color: #f4845f;
+  font-size: 0.7rem;
+}
+
+/* ─── Keyframe ────────────────────────────────────────── */
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.33%); }
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact-section  { padding: 60px 0 0; gap: 40px; }
+  .contact-cta      { padding: 0 24px; }
+  .contact-form     { max-width: 100%; }
+  .contact-badges   { gap: 16px; }
+  .contact-badge    { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .contact-form {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .contact-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-badges {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

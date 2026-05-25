@@ -6,7 +6,8 @@ import Skill from './Sections/Skill'
 import Experience from './Sections/Experience'
 import WhyHire from './Sections/WhyHire'
 import Project from './Sections/Project' 
-import VaxManager from './Sections/Vaxmanager'
+import Stack from './Sections/Stack'
+import Contact from './Sections/Contact'
   
 
 
@@ -20,7 +21,9 @@ const App = () => {
       <Experience/>
       <WhyHire/>
       <Project/>
-      <VaxManager/>
+      <Stack/>
+      <Contact/>        
+      
 
    </>
   )
