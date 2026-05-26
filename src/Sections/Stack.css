@@ -138,7 +138,7 @@ body {
 .stack-item {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 26px;
   font-size: clamp(1rem, 1.6vw, 1.35rem);
   font-weight: 700;
   color: #111;

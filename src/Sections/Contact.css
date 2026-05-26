@@ -10,6 +10,8 @@
   padding: 100px 0 0;
   overflow: hidden;
   gap: 60px;
+  
+  
 }
 
 /* ─── CTA ─────────────────────────────────────────────── */
@@ -122,6 +124,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 /* Diagonal orange borders */
@@ -154,6 +157,7 @@
   padding: 20px 0;
   transform: rotate(-1.5deg);
   margin: 20px -5%;
+  margin-bottom: 30px;
   width: 110%;
   overflow: hidden;
   border-top: 15px solid #f4845f;
@@ -175,9 +179,9 @@
 .contact-ticker-item {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
-  font-size: clamp(1rem, 2vw, 1.4rem);
-  font-weight: 800;
+  gap: 40px;
+  font-size: clamp(1rem, 2vw, 2.4rem);
+  font-weight: 900;
   color: #111;
   white-space: nowrap;
   padding: 0 8px;

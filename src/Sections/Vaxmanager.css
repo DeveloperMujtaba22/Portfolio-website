@@ -1,163 +1,147 @@
-.vax-section {
-  background: #f0eeeb;
-  padding: 3rem 2rem 4rem;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-}
 
-/* ── Skills Bar ── */
-.vax-skills-bar {
-  max-width: 1100px;
-  margin: 0 auto 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+  .vax-section {
+    background: #f0eeeb;
+    padding: 3rem 2rem 4rem;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-/* Row 1: pill left + tech stack right */
-.vax-skills-row1 {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
+  /* ── Skills Bar ── */
+  .vax-skills-bar {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
-/* Row 2: gap fix + indent under tech list */
-.vax-skills-row2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 2.5rem;           /* gap fix — items no longer stuck together */
-  padding-left: calc(194px + 2.5rem);
-}
+  /* ── Pill ── */
+  .vax-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid #d0d0d0;
+    border-radius: 50px;
+    padding: 0.65rem 1.6rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
 
-/* ── Pill ── */
-.vax-badge-pill {
-  display: inline-flex;
-  align-items: center;
-  background: #ffffff;
-  border: 2px solid #d0d0d0;
-  border-radius: 50px;
-  padding: 0.65rem 1.6rem;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1a1a1a;
-  white-space: nowrap;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  margin-bottom: 1.5rem;
-}
+  .vax-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 2rem;
+    align-items: center;
+  }
 
-.vax-tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 2.5rem;
-  align-items: center;
-}
+  .vax-tech-item {
+    font-size: 15px;
+    color: #444;
+    font-weight: 500;
+    cursor: default;
+    transition: color 0.2s;
+  }
 
-.vax-tech-item {
-  font-size: 16px;
-  color: #444;
-  font-weight: 500;
-  cursor: default;
-  transition: color 0.2s;
-}
+  .vax-tech-item:hover {
+    color: #e8682a;
+  }
 
-.vax-tech-item:hover {
-  color: #e8682a;
-}
+  /* ── Dots ── */
+  .vax-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 
-/* ── Dots — center fix ── */
-.vax-dots {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;      /* center fix */
-  width: 100%;
-  margin-bottom: 2rem;
-}
+  .vax-dot {
+    width: 30px;
+    height: 8px;
+    border-radius: 4px;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.25s, width 0.25s;
+    padding: 0;
+  }
 
-.vax-dot {
-  width: 30px;
-  height: 8px;
-  border-radius: 4px;
-  border: none;
-  background: #ccc;
-  cursor: pointer;
-  transition: background 0.25s, width 0.25s;
-  padding: 0;
-}
+  .vax-dot--active {
+    background: #e8682a;
+    width: 40px;
+  }
 
-.vax-dot--active {
-  background: #e8682a;
-  width: 40px;
-}
+  /* ── Project Card ── */
+  .vax-project-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+  }
 
-/* ── Project Card ── */
-.vax-project-wrap {
-  max-width: 780px;
-  margin: 0 auto;
-}
+  /* ── Project Content ── */
+  .vax-project-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    animation: vax-fadein 0.35s ease;
+  }
 
-/* ── Project Content ── */
-.vax-project-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-  animation: vax-fadein 0.35s ease;
-}
+  @keyframes vax-fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-@keyframes vax-fadein {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+  .vax-project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
 
-.vax-project-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
+  .vax-project-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+  }
 
-.vax-project-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 0;
-  line-height: 1.2;
-}
+  .vax-arrow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: #e8682a;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
 
-.vax-arrow-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: #e8682a;
-  border-radius: 50%;
-  color: #fff;
-  text-decoration: none;
-  flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
-}
+  .vax-arrow-btn:hover {
+    background: #cf5820;
+    transform: scale(1.08);
+  }
 
-.vax-arrow-btn:hover {
-  background: #cf5820;
-  transform: scale(1.08);
-}
+  .vax-project-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.75;
+    max-width: 680px;
+    margin: 0;
+  }
 
-.vax-project-desc {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.75;
-  max-width: 680px;
-  margin: 0;
-}
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .vax-skills-row1 { flex-wrap: wrap; }
-  .vax-skills-row2 { padding-left: 0; }
-  .vax-badge-pill { font-size: 15px; }
-  .vax-project-title { font-size: 1.4rem; }
-}
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .vax-skills-bar { flex-wrap: wrap; }
+    .vax-badge-pill { font-size: 14px; }
+    .vax-project-title { font-size: 1.4rem; }
+  }
