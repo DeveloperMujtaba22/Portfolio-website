@@ -8,6 +8,7 @@ import WhyHire from './Sections/WhyHire'
 import Project from './Sections/Project' 
 import Stack from './Sections/Stack'
 import Contact from './Sections/Contact'
+import Blog from './Sections/Blog'
   
 
 
@@ -22,7 +23,8 @@ const App = () => {
       <WhyHire/>
       <Project/>
       <Stack/>
-      <Contact/>        
+      <Contact/>      
+      <Blog/>  
       
 
    </>
