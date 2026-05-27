@@ -36,11 +36,13 @@ const NavBar = () => {
         .navbar-container {
           display: flex;
           align-items: center;
-          background-color: #1a1a24;
+            background: #2d2d2d;     /* ← exact value here */
+  background: #333;
+  background: rgba(30, 30, 30, 0.95);
           border-radius: 50px;
-          padding: 6px 8px 6px 9px;
-          gap: 70px;
-          max-width: 1010px;
+          padding: 3px 8px 6px 9px;
+          gap: 80px;
+          max-width: 1090px;
           width: 90%;
           box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
           font-family: 'Outfit', sans-serif;
@@ -48,18 +50,18 @@ const NavBar = () => {
 
         .nav-link {
           position: relative;
-          padding: 10px 20px;
+          padding: 10px 27px;
           border-radius: 70px;
-          font-size: 18px;
-          font-weight: 500;
-          color: #aaaabc;
+          font-size: 16px;
+          font-weight: 100;
+          color: rgba(255,255,255,0.8);
           cursor: pointer;
           transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
           white-space: nowrap;
           border: none;
           background: none;
           text-decoration: none;
-          letter-spacing: 0.01em;
+          letter-spacing: 0.03em;
         }
 
         .nav-link:hover {
@@ -85,15 +87,15 @@ const NavBar = () => {
         }
 
         .brand-avatar {
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           background: linear-gradient(135deg, #f4845f, #e8623a);
           border-radius: 10px;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 13px;
-          font-weight: 800;
+          font-weight: 500;
           color: white;
           letter-spacing: 0.02em;
           flex-shrink: 0;
@@ -112,13 +114,15 @@ const NavBar = () => {
         .nav-left {
           display: flex;
           align-items: center;
-          gap: 2px;
+          gap: 10px;
+          
         }
 
         .nav-right {
           display: flex;
           align-items: center;
-          gap: 2px;
+          gap: 10px;
+          margin-left: -60px;
         }
 
         @media (max-width: 768px) {
