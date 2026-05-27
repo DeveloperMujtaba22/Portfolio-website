@@ -25,7 +25,8 @@ const Hero = () => {
 
       {/* Left quote card */}
       <div className='hero-quote-card'>
-        <span className='quote-icon'>"</span>
+        <span className='quote-icon'>“
+</span>
         <p>A rare talent who understands both the user experience and the complex logic behind it.</p>
       </div>
 

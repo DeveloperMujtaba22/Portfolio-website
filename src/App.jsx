@@ -9,6 +9,7 @@ import Project from './Sections/Project'
 import Stack from './Sections/Stack'
 import Contact from './Sections/Contact'
 import Blog from './Sections/Blog'
+import Footer from './Sections/Footer'
   
 
 
@@ -24,7 +25,8 @@ const App = () => {
       <Project/>
       <Stack/>
       <Contact/>      
-      <Blog/>  
+      <Blog/> 
+      <Footer/> 
       
 
    </>
