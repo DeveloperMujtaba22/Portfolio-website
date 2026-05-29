@@ -20,11 +20,11 @@ const Footer = () => {
         </h2>
         <div className="footer-top-actions">
           <button className="footer-feedback-btn">
-            ★ Feedback
+             Feedback
           </button>
-          <a href="#contact" className="footer-hire-btn">
-            Hire Me ↗
-          </a>
+         <a href="#contact" className="footer-hire-btn">
+  Hire Me <span className="arrow">↗</span>
+</a>
         </div>
       </div>
 
@@ -36,8 +36,10 @@ const Footer = () => {
         {/* Left — Brand */}
         <div className="footer-brand">
           <div className="footer-logo">
-            <span className="footer-logo-badge">MR</span>
-            <span className="footer-logo-name">Mujtaba</span>
+         <span className="footer-logo-name">
+  <span className="footer-logo-badge">MR</span>
+  <span className="footer-logo-text">Mujtaba Rasheed </span>
+</span>
           </div>
           <p className="footer-tagline">
             Turning ideas into scalable digital experiences. Let's
