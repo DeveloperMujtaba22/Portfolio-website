@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState('Home')
   const [scrolled, setScrolled] = useState(false)
+   const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -10,8 +12,15 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = ['Home', 'About', 'Service', 'Resume', 'Project', 'Blogs', 'Contact']
-
+  const navLinks = [
+    { label: 'Home',    path: '/' },
+    { label: 'About',   path: '/about' },   // ← separate page
+    { label: 'Service', path: '/#service' },
+    { label: 'Resume',  path: '/#resume' },
+    { label: 'Project', path: '/#project' },
+    { label: 'Blogs',   path: '/#blogs' },
+    { label: 'Contact', path: '/#contact' },
+  ]
   return (
     <>
       <style>{`
@@ -150,39 +159,34 @@ const NavBar = () => {
         }
       `}</style>
 
-      <div className={`navbar-wrapper${scrolled ? ' scrolled' : ''}`}>
+           <div className={`navbar-wrapper${scrolled ? ' scrolled' : ''}`}>
         <nav className="navbar-container">
-          {/* Left nav links: Home, About, Service */}
           <div className="nav-left">
             {navLinks.slice(0, 3).map(link => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className={`nav-link${activeLink === link ? ' active' : ''}`}
-                onClick={() => setActiveLink(link)}
+              <Link
+                key={link.label}
+                to={link.path}
+                className={`nav-link${location.pathname === link.path ? ' active' : ''}`}
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
 
-          {/* Center brand */}
           <div className="brand-center">
             <div className="brand-avatar">MR</div>
             <span className="brand-name">Mujtaba</span>
           </div>
 
-          {/* Right nav links: Resume, Project, Blogs, Contact */}
           <div className="nav-right">
             {navLinks.slice(3).map(link => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className={`nav-link${activeLink === link ? ' active' : ''}`}
-                onClick={() => setActiveLink(link)}
+              <Link
+                key={link.label}
+                to={link.path}
+                className={`nav-link${location.pathname === link.path ? ' active' : ''}`}
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
         </nav>

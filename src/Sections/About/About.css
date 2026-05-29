@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+        .about-page {
+          background: #f0efeb;
+          min-height: 100vh;
+          padding-top: 90px;
+          font-family: 'Outfit', sans-serif;
+        }
+
+   .about-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1200px;       /* ← wider max */
+  margin: 0 auto;
+  padding: 60px 0px;
+}
+
+.about-photo-frame {
+  width: 620px;            /* ← reduced from 720px */
+  height: 780px;
+  border-radius: 50px;     /* ← bigger radius */
+  margin-left: -200px;        /* ← nudge left to balance */
+  margin-top: -40px;         /* ← nudge up slightly */
+  background: #e8ddd4;
+  overflow: hidden;
+  border: 25px solid #1a1a1a;
+}
+
+/* Add this — photo slides to show face better */
+.about-photo-frame img {
+  width: 150%;
+  height: 140%;
+  margin-top: -37%;         /* ← nudge up to show face better */
+  object-fit: cover;
+  object-position: center 10%;   /* ← nudge up slightly */
+  filter: grayscale(100%);
+}
+
+/* Badge stays centered */
+.about-photo-badge {
+  position: absolute;
+  bottom: -130px;
+  left: 36%;
+  transform: translateX(-50%);
+  background: #f4845f;
+  color: white;
+  padding: 25px 22px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+  width: 180px;
+}
+
+        .about-content {
+          flex: 1;
+          max-width: 520px;
+        }
+
+        .about-content h1 {
+          font-size: 3.3rem;
+          font-weight: 800;
+          color: #1a1a1a;
+          line-height: 1.15;
+          margin: 0 0 20px;
+          margin-top: -60px;
+        }
+
+        .about-content p {
+          color: #666;
+          font-size: 1.25rem;
+          line-height: 1.8;
+          margin: 0 0 10px;
+        }
+
+        .about-divider {
+          width: 100%;
+          height: 1px;
+          background: #ccc;
+          margin: 28px 0;
+        }
+
+        .about-stats {
+          display: flex;
+          gap: 50px;
+          margin-bottom: 32px;
+        }
+
+        .stat-item .stat-num {
+          font-size: 3rem;
+          font-weight: 800;
+          color: #f4845f;
+          line-height: 1;
+        }
+
+        .stat-item .stat-label {
+          font-size: 12px;
+          font-weight: 600;
+          color: #888;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-top: 6px;
+        }
+
+        .about-cv-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: white;
+          color: #1a1a1a;
+          border: 2px solid #1a1a1a;
+          padding: 16px 32px;
+          border-radius: 50px;
+          font-size: 15px;
+          font-weight: 600;
+          font-family: 'Outfit', sans-serif;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background 0.2s, color 0.2s;
+        }
+
+        .about-cv-btn:hover {
+          background: #1a1a1a;
+          color: white;
+        }
+
+        @media (max-width: 900px) {
+          .about-hero {
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px 24px;
+          }
+          .about-photo-frame {
+            width: 320px;
+            height: 400px;
+          }
+          .about-content h1 {
+            font-size: 2.2rem;
+          }
+        }
+      
+        
