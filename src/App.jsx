@@ -11,6 +11,7 @@ import Stack from './Sections/Stack/Stack'
 import Contact from './Sections/Contact/Contact'
 import Blog from './Sections/Blog/Blog'
 import Footer from './Sections/Footer/Footer'
+import Service1 from './Sections/Service1/Service1'
 
 const App = () => {
   return (
@@ -32,6 +33,8 @@ const App = () => {
           </>
         } />
         <Route path="/about" element={<About />} />
+        <Route path="/service1" element={<Service1 />} />
+
       </Routes>
     </>
   )
