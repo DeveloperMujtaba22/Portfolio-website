@@ -1,0 +1,395 @@
+/* ─── Resume Book ─── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ─── Top heading (add this new class) ─── */
+.rb-heading {
+  text-align: center;
+  /* margin-bottom: 10px; */
+  padding-top: 30px; /* space for navbar */
+}
+
+.rb-heading h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  font-family: 'Georgia', serif;
+  
+}
+
+.rb-heading h1 span {
+  color: #e85d1a;
+}
+
+.rb-heading p {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ─── Bottom download button ─── */
+.rb-download-bar {
+  margin-top: 16px;
+}
+
+.rb-download-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.15s;
+}
+
+.rb-download-btn:hover { background: #333; }
+/* ─── Wrap ─── */
+.rb-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* top-align to control spacing */
+  padding-top: 80px; /* space for your navbar */
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  gap: 20px;
+}
+
+/* ─── Stage ─── */
+/* ─── Stage ─── */
+.rb-stage {
+  width: 90vw;
+  height: calc(130vh - 220px);
+  margin-top: 0;
+  overflow: hidden;
+  position: relative;
+  border: 8px solid #000000;
+  border-radius: 24px;
+  
+  /* Dashed inner border using outline */
+  outline: 1px dashed #000000;
+  outline-offset: -16px;        /* pushes dashed line inward */
+}
+
+/* ─── Spreads ─── */
+.rb-spread {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Panes ─── */
+.rb-pane {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.rb-pane--cream {
+  background: #f2ede6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 4rem;
+}
+
+.rb-pane--white {
+  background: #fff;
+  border-left: 0.5px solid #e5e5e5;
+  overflow: hidden;
+  position: relative;
+}
+
+/* PDF scroll block overlay */
+.rb-pane--white::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: all;
+}
+
+.rb-pane--white-left {
+  background: #fff;
+  border-right: 0.5px solid #e5e5e5;
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+}
+
+.rb-pane--dark {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 4rem;
+}
+
+/* ─── Cover panel ─── */
+.rb-cover-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: #e85d1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.rb-cover-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.rb-cover-title span {
+  color: #e85d1a;
+  font-style: italic;
+}
+
+.rb-cover-sub {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #aaa;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+.rb-cover-hint {
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 8px;
+}
+
+/* ─── CV body ─── */
+.cv-body {
+  padding: 2.5rem 3rem;
+  height: 100%;
+  overflow-y: auto;
+  font-size: 13px;
+  color: #111;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.cv-body::-webkit-scrollbar { width: 4px; }
+.cv-body::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.cv-name {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #111;
+}
+
+.cv-role { font-size: 14px; color: #666; margin-top: 3px; }
+
+.cv-avatar {
+  width: 88px;
+  height: 104px;
+  border-radius: 6px;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 40px;
+  color: #aaa;
+}
+
+.cv-contact { margin-top: 10px; }
+
+.cv-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.cv-sec {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1.5px solid #e85d1a;
+  padding-bottom: 3px;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.cv-summary {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.7;
+  background: #faf8f5;
+  padding: 10px 14px;
+  border-left: 3px solid #e85d1a;
+}
+
+.cv-org-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cv-org { font-size: 13px; font-weight: 700; color: #111; }
+.cv-date { font-size: 12px; color: #888; }
+.cv-job-title { font-size: 12px; font-style: italic; color: #666; margin-bottom: 5px; }
+
+.cv-bullet {
+  font-size: 12px;
+  color: #444;
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 3px;
+  line-height: 1.6;
+}
+
+.cv-bullet::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #e85d1a;
+}
+
+.cv-skill-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.cv-skill-label { color: #666; font-weight: 700; min-width: 160px; }
+
+.cv-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+.cv-tag {
+  background: #f0ede8;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #555;
+}
+
+/* ─── End panel ─── */
+.rb-end-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.rb-end-title { font-size: 42px; font-weight: 700; color: #fff; text-align: center; }
+.rb-end-title span { color: #e85d1a; }
+.rb-end-sub { font-size: 15px; color: #888; text-align: center; line-height: 1.8; }
+.rb-end-sub strong { color: #fff; font-weight: 700; }
+
+.rb-end-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 200px;
+  margin-top: 8px;
+}
+
+.rb-btn-primary {
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: #e85d1a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+}
+
+.rb-btn-outline {
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: transparent;
+  color: #bbb;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.rb-btn-outline:hover { border-color: #555; color: #eee; }
+
+/* ─── Side arrow (center right) ─── */
+.rb-arrow {
+  position: absolute;
+  right: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000000;
+  border: 0.5px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: background 0.15s;
+}
+
+.rb-arrow:hover { background: #f5f5f5; }
+.rb-arrow:disabled { opacity: 0.3; cursor: default; }
+
+/* ─── Navigation HIDDEN ─── */
+.rb-nav {
+  display: none;
+}

@@ -1,7 +1,7 @@
 /* ─── Hero ────────────────────────────────────────────── */
 .s1-hero {
   position: relative;
-  height: 65vh;
+  height: 70vh;
   min-height: 400px;
   display: flex;
   align-items: flex-end;            /* ← text at bottom */
