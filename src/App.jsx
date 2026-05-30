@@ -12,6 +12,7 @@ import Contact from './Sections/Contact/Contact'
 import Blog from './Sections/Blog/Blog'
 import Footer from './Sections/Footer/Footer'
 import Service1 from './Sections/Service1/Service1'
+import Resume from './Sections/Resume/Resume'
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         } />
         <Route path="/about" element={<About />} />
         <Route path="/service1" element={<Service1 />} />
+        <Route path="/resume" element={<Resume />} />
 
       </Routes>
     </>

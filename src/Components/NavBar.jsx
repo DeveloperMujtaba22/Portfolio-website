@@ -16,7 +16,7 @@ const NavBar = () => {
     { label: 'Home',    path: '/' },
     { label: 'About',   path: '/about' },   // ← separate page
     { label: 'Service', path: '/service1' },
-    { label: 'Resume',  path: '/#resume' },
+    { label: 'Resume',  path: '/resume' },
     { label: 'Project', path: '/#project' },
     { label: 'Blogs',   path: '/#blogs' },
     { label: 'Contact', path: '/#contact' },
