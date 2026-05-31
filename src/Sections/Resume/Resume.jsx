@@ -139,19 +139,21 @@ export default function Resume() {
   </h1>
   <p>Interactive Digital Portfolio</p>
 </div>
+ <div class="rb-book-container">
+  <div class="rb-stage-wrapper">
+    <div class="rb-stage">
+      {slide === 0 ? <Slide1 /> : <Slide2 onBack={() => setSlide(0)} />}
+    </div>
+  </div>
 
-        <div className="rb-stage-wrapper">
-          <div className="rb-stage">
-            {slide === 0 ? <Slide1 /> : <Slide2 onBack={() => setSlide(0)} />}
-          </div>
-          <button
-            className="rb-arrow"
-            onClick={() => setSlide(s => s === 0 ? 1 : 0)}
-            aria-label={slide === 0 ? "Next" : "Previous"}
-          >
-            {slide === 0 ? "›" : "‹"}
-          </button>
-        </div>
+  <button
+    className="rb-arrow"
+    onClick={() => setSlide(s => s === 0 ? 1 : 0)}
+    aria-label={slide === 0 ? "Next" : "Previous"}
+  >
+    {slide === 0 ? "›" : "‹"}
+  </button>
+</div>
 
         <div className="rb-download-bar">
           <button className="rb-download-btn" onClick={handleDownload}>
