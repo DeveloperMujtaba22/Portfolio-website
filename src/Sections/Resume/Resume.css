@@ -6,18 +6,25 @@
   padding: 0;
 }
 /* ─── Top heading (add this new class) ─── */
+/* ─── Heading ─── */
 .rb-heading {
   text-align: center;
-  /* margin-bottom: 10px; */
-  padding-top: 30px; /* space for navbar */
+  padding-top: 30px;
 }
 
 .rb-heading h1 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 29px;
+  font-weight: 900;
   color: #111;
-  font-family: 'Georgia', serif;
-  
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.rb-heading h1 strong {
+  color: #111;
 }
 
 .rb-heading h1 span {
@@ -25,11 +32,27 @@
 }
 
 .rb-heading p {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
-  color: #aaa;
+  color: #939292;
   text-transform: uppercase;
   margin-top: 4px;
+}
+
+/* ─── Book icon — typewriter cursor blink + float ─── */
+.rb-book-icon {
+  display: inline-flex;
+  animation: floatBook 3s ease-in-out infinite;
+  font-size: 26px;
+  padding-right: 7px;
+}
+
+@keyframes floatBook {
+  0%   { transform: rotate(-15deg); transform-origin: top center; }
+  25%  { transform: rotate(15deg);  transform-origin: top center; }
+  50%  { transform: rotate(-10deg); transform-origin: top center; }
+  75%  { transform: rotate(10deg);  transform-origin: top center; }
+  100% { transform: rotate(-15deg); transform-origin: top center; }
 }
 
 /* ─── Bottom download button ─── */
@@ -72,27 +95,62 @@
 
 /* ─── Stage ─── */
 /* ─── Stage ─── */
-.rb-stage {
-  width: 90vw;
-  height: calc(130vh - 220px);
-  margin-top: 0;
-  overflow: hidden;
+/* ─── Stage wrapper — dashed border ke liye ─── */
+/* ─── Stage wrapper — dashed border ke liye ─── */
+/* ─── Stage wrapper ─── */
+/* ─── Stage wrapper ─── */
+/* ─── Stage wrapper ─── */
+/* ─── Stage wrapper ─── */
+.rb-stage-wrapper {
   position: relative;
-  border: 8px solid #000000;
+  border: 25px solid #121212;
+  border-top: 16px solid #121212;
   border-radius: 24px;
-  
-  /* Dashed inner border using outline */
-  outline: 1px dashed #000000;
-  outline-offset: -16px;        /* pushes dashed line inward */
+  padding: 4px;
+  overflow: hidden;              /* ← yeh add karo — text clip karega */
 }
 
-/* ─── Spreads ─── */
+/* ─── Dashed inner border ─── */
+.rb-stage-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed #575656;
+  border-radius: 9px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* ─── Stage ─── */
+.rb-stage {
+  width: 70vw;
+  height: calc(126vh - 216px);
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;           /* ← wrapper se match karo */
+}
+
+/* ─── Spread ─── */
 .rb-spread {
   display: flex;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
+/* ─── Center spine ─── */
+.rb-spread::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: #000000;
+  z-index: 10;
+  pointer-events: none;
+}
 /* ─── Panes ─── */
 .rb-pane {
   width: 50%;
@@ -121,10 +179,12 @@
 /* PDF scroll block overlay */
 .rb-pane--white::after {
   content: "";
-  position: absolute;
+  /* position: absolute; */
   inset: 0;
   z-index: 10;
   pointer-events: all;
+  
+  
 }
 
 .rb-pane--white-left {
@@ -146,44 +206,76 @@
 
 /* ─── Cover panel ─── */
 .rb-cover-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-  background: #e85d1a;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  background: #e8623a;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 900;
   color: #fff;
+  letter-spacing: 1px;
 }
 
 .rb-cover-title {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 48px;             /* ← bara */
+  font-family:'arial black', sans-serif;
+  font-weight: 900;            /* ← maximum bold */
   color: #111;
-  line-height: 1.3;
+  line-height: 1.1;
   text-align: center;
 }
 
 .rb-cover-title span {
-  color: #e85d1a;
+  color: #e8623a;
   font-style: italic;
+  font-family:'arial black', sans-serif;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  font-size: 45px;   
+  letter-spacing: -2px;
+}
+
+.rb-cover-title span::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;                  /* ← short center line */
+  height: 3px;
+  background: #b5b0af;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 #e8623a; /* ← second line 6px neeche */
 }
 
 .rb-cover-sub {
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
   line-height: 1.8;
+  font-weight: 600;
+}
+
+.rb-cover-sub .sub-gray {
+  color: #8d8c8c;              /* ← gray — "AN INTERACTIVE JOURNEY THROUGH" */
+}
+
+.rb-cover-sub .sub-black {
+  color: #111111;              /* ← black — "MY CODE, DESIGN & LOGIC." */
+  font-weight: 900;
 }
 
 .rb-cover-hint {
-  font-size: 13px;
-  color: #ccc;
+  font-size: 14px;
+  color: #8d8c8c;
   margin-top: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 
 /* ─── CV body ─── */

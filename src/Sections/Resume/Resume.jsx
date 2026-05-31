@@ -54,9 +54,11 @@ function Slide1() {
           Welcome to my<br />
           <span>Digital Ledger.</span>
         </div>
-        <div className="rb-cover-sub">
-          An interactive journey through<br />my code, design &amp; logic.
-        </div>
+      <div className="rb-cover-sub">
+  <span className="sub-gray">An interactive journey through</span>
+  <br />
+  <span className="sub-black">my code, design &amp; logic.</span>
+</div>
         <div className="rb-cover-hint">Flip to explore →</div>
       </div>
       <div className="rb-pane rb-pane--white">
@@ -124,12 +126,21 @@ export default function Resume() {
   return (
     <>
       <div className="rb-wrap">
-        <div className="rb-heading">
-          <h1>📖 <strong>Mujtaba's</strong> <span>Resume Book</span></h1>
-          <p>Interactive Digital Portfolio</p>
-        </div>
+       <div className="rb-heading">
+  <h1>
+    <span className="rb-book-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" 
+           stroke="#e85d1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    </span>
+    <strong>Mujtaba's</strong>&nbsp;<span>Resume Book</span>
+  </h1>
+  <p>Interactive Digital Portfolio</p>
+</div>
 
-        <div style={{ position: "relative", display: "inline-block" }}>
+        <div className="rb-stage-wrapper">
           <div className="rb-stage">
             {slide === 0 ? <Slide1 /> : <Slide2 onBack={() => setSlide(0)} />}
           </div>
@@ -151,4 +162,4 @@ export default function Resume() {
       <Footer />
     </>
   );
-}          {/* ← this closing brace + bracket was missing */}
+}
