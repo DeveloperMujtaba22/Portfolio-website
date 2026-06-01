@@ -1,17 +1,28 @@
 import { useState } from "react";
 import Footer from "../Footer/Footer";
 
+const ORANGE = "#e8623a";
+const ORANGE_DARK = "#e85c1f";
+const ORANGE_GLOW = "rgba(255,107,43,0.35)";
+const ORANGE_SOFT = "rgba(255,107,43,0.12)";
+const BG = "#F2EFE9";
+const CARD_BG = "#ffffff";
+const ICON_BG = "#EDEAE4";
+const DARK = "#1a1a1a";
+const MUTED = "#999";
+const BORDER = "#e0ddd7";
+
 const s = {
   wrapper: {
-    maxWidth: 1300,
+    maxWidth: 1400,
     margin: "0 auto",
-    padding: "140px 40px 80px",
+    padding: "140px 60px 80px",
     display: "grid",
-    gridTemplateColumns: "1fr 1.3fr",
-    gap: 90,
+    gridTemplateColumns: "1fr 1.2fr",
+    gap: 80,
     alignItems: "start",
     fontFamily: "'DM Sans', sans-serif",
-    background: "#F2EFE9",
+    background: BG,
     minHeight: "100vh",
     boxSizing: "border-box",
   },
@@ -23,111 +34,75 @@ const s = {
     fontSize: 12,
     fontWeight: 600,
     letterSpacing: "1.5px",
-    color: "#e8623a",
+    color: ORANGE,
     textTransform: "uppercase",
     background: "rgba(255,107,43,0.1)",
     border: "1px solid rgba(255,107,43,0.2)",
     borderRadius: 50,
-    padding: "6px 10px",
+    padding: "6px 14px",
     marginBottom: 24,
     width: "fit-content",
   },
   badgeDot: {
     width: 8,
     height: 8,
-    background: "#e8623a",
+    background: ORANGE,
     borderRadius: "50%",
   },
   headline: {
     fontFamily: "'Bebas Neue', sans-serif",
-    fontWeight: 900,
-    fontSize: 110,
-    lineHeight: 0.92,
-    letterSpacing: 7,
+    fontSize: 140,
+    lineHeight: 0.9,
+    letterSpacing: 6,
     margin: "0 0 6px",
-    color: "#1a1a1a",
+    color: DARK,
   },
-  orange: { color: "#e8623a", display: "block" },
+  orange: { color: ORANGE, display: "block" },
   dot: {
     display: "inline-block",
-    width: 18,
-    height: 18,
-    background: "#1a1a1a",
-    marginLeft: 4,
+    width: 22,
+    height: 22,
+    background: DARK,
+    marginLeft: 6,
     verticalAlign: "bottom",
-    marginBottom: 8,
+    marginBottom: 10,
   },
   tagline: {
     marginTop: 20,
     fontSize: 15,
     color: "#666",
-    maxWidth: 340,
+    maxWidth: 380,
     lineHeight: 1.6,
     marginBottom: 40,
   },
   contactItems: { display: "flex", flexDirection: "column", gap: 12 },
-  contactCard: {
-    background: "#ffffff",
-    borderRadius: 16,
-    padding: "16px 20px",
-    display: "flex",
-    alignItems: "center",
-    gap: 16,
-    border: "1px solid #ddd",
-    cursor: "default",
-    transition: "transform 0.2s, box-shadow 0.2s",
-  },
-  contactIcon: {
-    width: 42,
-    height: 42,
-    borderRadius: 12,
-    background: "#EDEAE4",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 18,
-    flexShrink: 0,
-  },
   contactLabel: {
     fontSize: 10,
     fontWeight: 700,
     letterSpacing: "1.5px",
     textTransform: "uppercase",
-    color: "#999",
+    color: MUTED,
     marginBottom: 2,
   },
-  contactValue: { fontSize: 14, fontWeight: 500, color: "#1a1a1a" },
+  contactValue: { fontSize: 14, fontWeight: 500, color: DARK },
   socials: { display: "flex", alignItems: "center", gap: 12, marginTop: 32 },
   socialsLabel: {
     fontSize: 11,
     fontWeight: 600,
     letterSpacing: "2px",
-    color: "#999",
+    color: MUTED,
     textTransform: "uppercase",
   },
-  socialBtn: {
-    width: 40,
-    height: 40,
-    borderRadius: "50%",
-    background: "#1a1a1a",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    color: "#ffffff",
-    fontSize: 13,
-    fontWeight: 600,
-  },
   formCard: {
-    background: "#ffffff",
+    background: CARD_BG,
     borderRadius: 24,
     padding: 40,
-    border: "1px solid #ddd",
+    border: `1px solid ${BORDER}`,
     boxShadow: "0 8px 40px rgba(0,0,0,0.06)",
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    gap:  36,
+    gap: 36,
   },
   formRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 },
   field: { display: "flex", flexDirection: "column", gap: 6 },
@@ -136,45 +111,28 @@ const s = {
     fontWeight: 700,
     letterSpacing: "1.5px",
     textTransform: "uppercase",
-    color: "#999",
+    color: MUTED,
   },
   input: {
-    background: "#EDEAE4",
+    background: ICON_BG,
     border: "1.5px solid transparent",
     borderRadius: 12,
     padding: "14px 16px",
     fontSize: 14,
     fontFamily: "'DM Sans', sans-serif",
-    color: "#1a1a1a",
+    color: DARK,
     outline: "none",
     width: "100%",
     boxSizing: "border-box",
+    transition: "border-color 0.2s, box-shadow 0.2s, background 0.2s",
   },
   textarea: { height: 120, lineHeight: 1.6, resize: "none" },
-  sendBtn: {
-    width: "100%",
-    background: "#e8623a",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: 14,
-    padding: 18,
-    fontSize: 13,
-    fontWeight: 700,
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    marginTop: 8,
-  },
   responseBadge: {
     position: "absolute",
-    bottom: -16,
+    bottom: -20,
     right: 24,
-    background: "#1a1a1a",
-    color: "#ffffff",
+    background: DARK,
+    color: "#fff",
     borderRadius: 12,
     padding: "10px 18px",
   },
@@ -183,81 +141,79 @@ const s = {
     fontWeight: 600,
     letterSpacing: "1.5px",
     textTransform: "uppercase",
-    color: "#999",
+    color: MUTED,
     display: "flex",
     alignItems: "center",
     gap: 6,
     marginBottom: 2,
   },
-  greenDot: {
-    width: 7,
-    height: 7,
-    background: "#22c55e",
-    borderRadius: "50%",
-    display: "inline-block",
-  },
-  rtValue: { fontSize: 15, fontWeight: 700, letterSpacing: "0.5px" },
+  rtValue: { fontSize: 15, fontWeight: 700, letterSpacing: "0.5px", color: "#fff" },
 };
+
+const CONTACT_ICON = { Email: "ti-mail", Phone: "ti-phone", Location: "ti-map-pin" };
+
+const CARD_ACCENT = {
+  Email:    { bg: "#fff5f0", icon: ORANGE,    border: "rgba(232,98,58,0.25)"  },
+  Phone:    { bg: "#f0f7ff", icon: "#3b82f6", border: "rgba(59,130,246,0.25)" },
+  Location: { bg: "#f0fdf4", icon: "#22c55e", border: "rgba(34,197,94,0.25)"  },
+};
+
+const SOCIAL_CONFIG = [
+  { key: "gh",  icon: "ti-brand-github",    label: "GitHub"    },
+  { key: "li",  icon: "ti-brand-linkedin",  label: "LinkedIn"  },
+  { key: "ig",  icon: "ti-brand-instagram", label: "Instagram" },
+];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard]     = useState(null);
   const [hoveredSocial, setHoveredSocial] = useState(null);
-  const [hoveredBtn, setHoveredBtn] = useState(false);
-  const [focusedField, setFocusedField] = useState(null);
+  const [hoveredBtn, setHoveredBtn]       = useState(false);
+  const [focusedField, setFocusedField]   = useState(null);
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const handleSubmit = () => console.log("Form submitted:", form);
 
   const contacts = [
-    { icon: "✉️", label: "Email",    value: "mujtabarasheed20@gmail.com" },
-    { icon: "📞", label: "Phone",    value: "+92 3265911975" },
-    { icon: "📍", label: "Location", value: "Karachi, Pakistan" },
-  ];
-
-  const socials = [
-    { key: "gh",  label: "G" },
-    { key: "li",  label: "in" },
-    { key: "ig",  label: "ig" },
+    { label: "Email",    value: "mujtabarasheed20@gmail.com" },
+    { label: "Phone",    value: "+92 3265911975"             },
+    { label: "Location", value: "Karachi, Pakistan"          },
   ];
 
   const inputStyle = (name) => ({
     ...s.input,
     ...(focusedField === name
-      ? { borderColor: "#e8623a", boxShadow: "0 0 0 3px rgba(255,107,43,0.12)", background: "#ffffff" }
+      ? { borderColor: ORANGE, boxShadow: `0 0 0 3px ${ORANGE_SOFT}`, background: "#ffffff" }
       : {}),
   });
 
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+
       <style>{`
         @keyframes pulse {
           0%,100% { opacity:1; transform:scale(1); }
-          50%      { opacity:0.5; transform:scale(1.3); }
+          50%      { opacity:.5; transform:scale(1.3); }
         }
-        .badge-dot { animation: pulse 1.5s infinite; }
-        .green-dot { animation: pulse 1.5s infinite; }
+        .bdot { animation: pulse 1.5s infinite; }
+        .gdot { animation: pulse 1.5s infinite; }
       `}</style>
 
       <div style={s.wrapper}>
+
         {/* LEFT */}
         <div style={s.left}>
+
           <div style={s.badge}>
-            <span className="badge-dot" style={s.badgeDot} />
+            <span className="bdot" style={s.badgeDot} />
             Available for projects
           </div>
 
           <h1 style={s.headline}>
             LET'S
-            <span style={s.orange}>
-              CONNECT<span style={s.dot} />
-            </span>
+            <span style={s.orange}>CONNECT<span style={s.dot} /></span>
           </h1>
 
           <p style={s.tagline}>
@@ -265,74 +221,100 @@ export default function Contact() {
           </p>
 
           <div style={s.contactItems}>
-            {contacts.map(({ icon, label, value }, i) => (
-              <div
-                key={label}
-                style={{
-                  ...s.contactCard,
-                  ...(hoveredCard === i
-                    ? { transform: "translateX(4px)", boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }
-                    : {}),
-                }}
-                onMouseEnter={() => setHoveredCard(i)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <div style={s.contactIcon}>{icon}</div>
-                <div>
-                  <div style={s.contactLabel}>{label}</div>
-                  <div style={s.contactValue}>{value}</div>
+            {contacts.map(({ label, value }) => {
+              const hov    = hoveredCard === label;
+              const accent = CARD_ACCENT[label];
+              return (
+                <div
+                  key={label}
+                  onMouseEnter={() => setHoveredCard(label)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  style={{
+                    background: hov ? accent.bg : CARD_BG,
+                    borderRadius: 16,
+                    padding: "16px 20px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 16,
+                    border: `1px solid ${hov ? accent.border : BORDER}`,
+                    transform: hov ? "translateX(6px)" : "translateX(0)",
+                    boxShadow: hov ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
+                    transition: "transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s, border-color 0.25s, background 0.25s",
+                    cursor: "default",
+                  }}
+                >
+                  <div style={{
+                    width: 42, height: 42, borderRadius: 12,
+                    background: hov ? accent.bg : "#EDEAE4",
+                    border: `1px solid ${hov ? accent.border : "transparent"}`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                    transition: "background 0.25s, border-color 0.25s",
+                  }}>
+                    <i
+                      className={`ti ${CONTACT_ICON[label]}`}
+                      style={{ fontSize: 20, color: hov ? accent.icon : "#888", transition: "color 0.25s" }}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div>
+                    <div style={s.contactLabel}>{label}</div>
+                    <div style={s.contactValue}>{value}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div style={s.socials}>
             <span style={s.socialsLabel}>Socials //</span>
-            {socials.map(({ key, label }) => (
-              <div
-                key={key}
-                style={{
-                  ...s.socialBtn,
-                  ...(hoveredSocial === key
-                    ? { background: "#e8623a", transform: "translateY(-2px)" }
-                    : {}),
-                }}
-                onMouseEnter={() => setHoveredSocial(key)}
-                onMouseLeave={() => setHoveredSocial(null)}
-              >
-                {label}
-              </div>
-            ))}
+            {SOCIAL_CONFIG.map(({ key, icon, label }) => {
+              const hov = hoveredSocial === key;
+              return (
+                <div
+                  key={key}
+                  aria-label={label}
+                  onMouseEnter={() => setHoveredSocial(key)}
+                  onMouseLeave={() => setHoveredSocial(null)}
+                  style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: hov ? ORANGE : DARK,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    cursor: "pointer",
+                    transform: hov ? "translateY(-3px) scale(1.12)" : "translateY(0) scale(1)",
+                    boxShadow: hov ? `0 6px 16px ${ORANGE_GLOW}` : "none",
+                    transition: "background 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s",
+                  }}
+                >
+                  <i className={`ti ${icon}`} style={{ fontSize: 18, color: "#fff" }} aria-hidden="true" />
+                </div>
+              );
+            })}
           </div>
+
         </div>
 
         {/* RIGHT */}
         <div style={s.formCard}>
+
           <div style={s.formRow}>
-            <div style={s.field}>
-              <label style={s.label}>Full Name</label>
-              <input
-                style={inputStyle("name")}
-                name="name"
-                placeholder="Mujtaba Rasheed"
-                value={form.name}
-                onChange={handleChange}
-                onFocus={() => setFocusedField("name")}
-                onBlur={() => setFocusedField(null)}
-              />
-            </div>
-            <div style={s.field}>
-              <label style={s.label}>Email Address</label>
-              <input
-                style={inputStyle("email")}
-                name="email"
-                placeholder="hello@example.com"
-                value={form.email}
-                onChange={handleChange}
-                onFocus={() => setFocusedField("email")}
-                onBlur={() => setFocusedField(null)}
-              />
-            </div>
+            {[
+              { name:"name",  label:"Full Name",     placeholder:"Mujtaba Rasheed"   },
+              { name:"email", label:"Email Address", placeholder:"hello@example.com" },
+            ].map(({ name, label, placeholder }) => (
+              <div key={name} style={s.field}>
+                <label style={s.label}>{label}</label>
+                <input
+                  style={inputStyle(name)}
+                  name={name}
+                  placeholder={placeholder}
+                  value={form[name]}
+                  onChange={handleChange}
+                  onFocus={() => setFocusedField(name)}
+                  onBlur={() => setFocusedField(null)}
+                />
+              </div>
+            ))}
           </div>
 
           <div style={s.field}>
@@ -362,29 +344,46 @@ export default function Contact() {
           </div>
 
           <button
-            style={{
-              ...s.sendBtn,
-              ...(hoveredBtn
-                ? { background: "#e85c1f", transform: "translateY(-1px)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }
-                : {}),
-            }}
+            onClick={handleSubmit}
             onMouseEnter={() => setHoveredBtn(true)}
             onMouseLeave={() => setHoveredBtn(false)}
-            onClick={handleSubmit}
+            style={{
+              width: "100%",
+              background: hoveredBtn ? ORANGE_DARK : ORANGE,
+              color: "#fff",
+              border: "none",
+              borderRadius: 14,
+              padding: 18,
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 10,
+              transform: hoveredBtn ? "translateY(-2px)" : "translateY(0)",
+              boxShadow: hoveredBtn ? `0 8px 24px ${ORANGE_GLOW}` : "none",
+              transition: "background 0.2s, transform 0.2s, box-shadow 0.2s",
+              fontFamily: "'DM Sans', sans-serif",
+            }}
           >
-            SEND DISPATCH ➤
+            <i className="ti ti-send" style={{ fontSize: 17 }} aria-hidden="true" />
+            SEND DISPATCH
           </button>
 
           <div style={s.responseBadge}>
             <div style={s.rtLabel}>
-              <span className="green-dot" style={s.greenDot} />
+              <span className="gdot" style={{ width:7, height:7, background:"#22c55e", borderRadius:"50%", display:"inline-block" }} />
               Response Time
             </div>
             <div style={s.rtValue}>&lt; 24 Hours</div>
           </div>
+
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
