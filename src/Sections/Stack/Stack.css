@@ -13,8 +13,6 @@ body {
   font-family: 'Outfit', sans-serif;
 }
 
-
-
 /* ═══════════════════════════════════════════════════════
    SLIDER DOTS
 ═══════════════════════════════════════════════════════ */
@@ -55,7 +53,7 @@ body {
   display: flex;
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 22px 0;
+  padding: 18px 0;
 }
 
 .stack-row:last-child {
@@ -65,7 +63,7 @@ body {
 /* ─── Label ───────────────────────────────────────────── */
 .stack-label {
   flex-shrink: 0;
-  width: 240px;
+  width: 220px;
   padding-left: 32px;
 }
 
@@ -91,31 +89,11 @@ body {
 }
 
 /* ─── Track ───────────────────────────────────────────── */
-/* ─── Track ───────────────────────────────────────────── */
 .stack-track {
   flex: 1;
   overflow: hidden;
-  /* Remove the fade masks for full visibility */
   mask-image: none;
   -webkit-mask-image: none;
-}
-
-/* Alternative: minimal fade at edges only */
-.stack-track--fade {
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 5%,
-    #000 95%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 5%,
-    #000 95%,
-    transparent 100%
-  );
 }
 
 /* ─── Items ───────────────────────────────────────────── */
@@ -123,48 +101,54 @@ body {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee 20s linear infinite;
+  animation: marquee 28s linear infinite;
 }
 
 .stack-track--reverse .stack-items {
-  animation: marqueeReverse 20s linear infinite;
+  animation: marqueeReverse 28s linear infinite;
 }
 
-.stack-row:hover .stack-items {
-  animation-play-state: paused;
-}
 
-/* ─── Single item ─────────────────────────────────────── */
-.stack-item {
+
+/* ─── Skill Pill (icon + label) ───────────────────────── */
+.skill-pill {
   display: inline-flex;
   align-items: center;
-  gap: 26px;
-  font-size: clamp(1rem, 1.6vw, 1.35rem);
-  font-weight: 700;
-  color: #111;
+  gap: 8px;
+  background: #fff;
+  border: 1.5px solid #e0deda;
+  border-radius: 50px;
+  padding: 7px 16px;
+  margin: 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
   white-space: nowrap;
-  padding: 0 8px;
   cursor: default;
-  transition: color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.stack-item:hover {
-  color: #f4845f;
+.skill-pill:hover {
+  border-color: #f4845f;
+  box-shadow: 0 2px 10px rgba(244, 132, 95, 0.2);
 }
 
-.stack-dot {
-  color: #f4845f;
-  font-size: 1rem;
+.skill-pill__icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
 }
 
 /* ─── Keyframes ───────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
-  to   { transform: translateX(-30%); }
+  to   { transform: translateX(-33.33%); }
 }
 
 @keyframes marqueeReverse {
-  from { transform: translateX(-30%); }
+  from { transform: translateX(-33.33%); }
   to   { transform: translateX(0); }
 }
 
@@ -179,21 +163,19 @@ body {
   gap: 1.2rem;
   animation: vax-fadein 0.15s ease;
 }
- 
+
 @keyframes vax-fadein {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
- 
 .vax-project-title-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
 }
- 
+
 .vax-project-title {
   font-size: 2.7rem;
   font-weight: 700;
@@ -202,13 +184,12 @@ body {
   line-height: 1.2;
   margin-top: 60px;
 }
- 
+
 .vax-arrow-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-  
   width: 44px;
   height: 44px;
   background: #e8682a;
@@ -218,12 +199,12 @@ body {
   flex-shrink: 0;
   transition: background 0.2s, transform 0.2s;
 }
- 
+
 .vax-arrow-btn:hover {
   background: #cf5820;
   transform: scale(1.08);
 }
- 
+
 .vax-project-desc {
   font-size: 20px;
   color: #555;
@@ -241,7 +222,7 @@ body {
   margin-bottom: 3rem;
   margin-top: 1.9rem;
 }
- 
+
 .vax-dot {
   width: 30px;
   height: 8px;
@@ -252,7 +233,7 @@ body {
   transition: background 0.25s, width 0.25s;
   padding: 0;
 }
- 
+
 .vax-dot--active {
   background: #e8682a;
   width: 40px;
@@ -262,10 +243,8 @@ body {
    RESPONSIVE
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-
-
   .stack-label {
-    width: 160px;
+    width: 140px;
     padding-left: 16px;
   }
 
@@ -274,12 +253,13 @@ body {
     padding: 7px 14px;
   }
 
-  .stack-item {
-    font-size: clamp(0.85rem, 3vw, 1rem);
+  .skill-pill {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 
-  .project-section {
-    padding: 40px 20px 50px;
+  .skill-pill__icon {
+    width: 16px;
+    height: 16px;
   }
 }
-

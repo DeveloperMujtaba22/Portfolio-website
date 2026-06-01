@@ -5,25 +5,40 @@ import './Stack.css';
 
 const STACKS = [
   {
-    category: 'Full Stack Development',
+    category: 'Full Stack',
     items: [
-      'ASP.NET Core', 'React.js', 'Node.js', 'Express.js',
-      'SQL Server', 'MongoDB', 'RESTful APIs',
-      'Authentication & Authorization', 'Database Design',
+      { name: 'React.js',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'Node.js',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express.js',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+      { name: 'MongoDB',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+      { name: 'SQL Server',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg' },
+      { name: 'ASP.NET Core', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg' },
+      { name: 'REST APIs',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
     ],
   },
   {
     category: 'Frontend',
     items: [
-      'React.js', 'Angular', 'TypeScript', 'Tailwind CSS',
-      'Shadcn UI', 'HTML5', 'CSS3', 'SCSS', 'Figma',
+      { name: 'React.js',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'TypeScript',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+      { name: 'Angular',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+      { name: 'HTML5',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+      { name: 'CSS3',         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+      { name: 'Figma',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+      { name: 'SCSS',         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
     ],
   },
   {
     category: 'Backend',
     items: [
-      'Node.js', 'Express.js', 'Laravel', 'REST APIs',
-      'GraphQL', 'JWT Auth', 'MongoDB', 'MySQL',
+      { name: 'Node.js',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Laravel',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg' },
+      { name: 'GraphQL',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
+      { name: 'MongoDB',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+      { name: 'MySQL',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'Redis',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+      { name: 'Docker',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
     ],
   },
 ];
@@ -52,15 +67,7 @@ const projects = [
   },
 ];
 
-// ─── Arrow Icon ─────────────────────────────────────────
-const ArrowUpRight = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <line x1="7" y1="17" x2="17" y2="7" />
-    <polyline points="7 7 17 7 17 17" />
-  </svg>
-);
-
-// ─── Helper to duplicate items for seamless marquee ─────
+// ─── Helper ─────────────────────────────────────────────
 const createMarqueeItems = (items) => [...items, ...items, ...items];
 
 // ─── Component ──────────────────────────────────────────
@@ -79,14 +86,17 @@ const Stack = () => {
             </div>
 
             {/* Marquee track */}
-            <div
-              className={`stack-track${ri % 2 === 1 ? ' stack-track--reverse' : ''}`}
-            >
+            <div className={`stack-track${ri % 2 === 1 ? ' stack-track--reverse' : ''}`}>
               <div className="stack-items">
                 {createMarqueeItems(row.items).map((item, ii) => (
-                  <span key={ii} className="stack-item">
-                    {item}
-                    <span className="stack-dot">●</span>
+                  <span key={ii} className="skill-pill">
+                    <img
+                      src={item.icon}
+                      alt={item.name}
+                      className="skill-pill__icon"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                    {item.name}
                   </span>
                 ))}
               </div>
@@ -94,8 +104,6 @@ const Stack = () => {
           </div>
         ))}
       </section>
-
- 
 
       {/* ── Project Section ──────────────────── */}
       <div className="vax-project-wrap">
@@ -116,12 +124,13 @@ const Stack = () => {
           <p className="vax-project-desc">{projects[activeProject].description}</p>
         </div>
       </div>
-           {/* ── Dots (moved outside stack-section) ── */}
+
+      {/* ── Dots ── */}
       <div className="vax-dots">
         {projects.map((_, i) => (
           <button
             key={i}
-            className={`vax-dot ${activeProject === i ? "vax-dot--active" : ""}`}
+            className={`vax-dot ${activeProject === i ? 'vax-dot--active' : ''}`}
             onClick={() => setActiveProject(i)}
             aria-label={`Project ${i + 1}`}
           />
@@ -129,6 +138,6 @@ const Stack = () => {
       </div>
     </>
   );
-}
+};
 
 export default Stack;

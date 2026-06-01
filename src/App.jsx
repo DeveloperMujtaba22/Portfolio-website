@@ -13,6 +13,7 @@ import Blog from './Sections/Blog/Blog'
 import Footer from './Sections/Footer/Footer'
 import Service1 from './Sections/Service1/Service1'
 import Resume from './Sections/Resume/Resume'
+import Project1 from './Sections/Project1/Project1'
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/service1" element={<Service1 />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/project1" element={<Project1 />} />
 
       </Routes>
     </>

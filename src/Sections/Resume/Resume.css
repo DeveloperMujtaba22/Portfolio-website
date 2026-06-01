@@ -20,7 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top:17px;
   gap: 2px;
+  
 }
 
 .rb-heading h1 strong {
