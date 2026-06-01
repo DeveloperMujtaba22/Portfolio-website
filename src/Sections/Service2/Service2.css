@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+.service-wrapper {
+  border-radius: 80px;
+  overflow: hidden;
+  margin: 0;
+  background-color: #0d0d14;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.service-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 60px;
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 48px;
+  /* ← remove background-image from here */
+}
+
+/* Blurred background via pseudo-element */
+.service-section::before {
+  content: '';
+  position: absolute;
+  inset: -20px; /* slightly larger to hide blur edges */
+  background-image: url('assets/service-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px); /* ← adjust blur amount here */
+  z-index: 0;
+}
+
+.service-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.service-blob--tl {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #f4845f 0%, transparent 70%);
+  top: -120px;
+  left: -80px;
+  opacity: 0.6;
+}
+
+.service-blob--tr {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #f4845f 0%, transparent 70%);
+  top: 0px;
+  right: 80px;
+  opacity: 0.45;
+}
+
+.service-blob--br {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #c0392b 0%, transparent 70%);
+  bottom: -150px;
+  right: -120px;
+  opacity: 0.5;
+}
+
+.service-header,
+.service-cards,
+.service-dots {
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.service-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.service-title {
+  font-size: clamp(3rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  margin-top: -30px;
+}
+
+.service-highlight {
+  color: #f4845f;
+}
+
+.service-desc {
+  max-width: 420px;
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.7;
+  margin: 6px 0 0;
+}
+
+/* Cards */
+.service-cards {
+  display: flex;
+  gap: 80px;
+}
+
+.service-card {
+  flex: 1;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(29px);           
+  /* -webkit-backdrop-filter: blur(12px); */   /* ← comment out */
+  /* border: 1.5px solid rgba(255, 255, 255, 0.4); */ /* ← remove or keep subtle */
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(244, 132, 95, 0.15);
+}
+
+/* Title at top */
+.service-card-title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+  padding: 22px 22px 18px;
+  background: #151516; /* ← solid dark, no blur */
+  position: relative;
+  z-index: 3;
+  margin-bottom: -1px;
+  /* Remove these if present: */
+  /* backdrop-filter: none; */
+  /* -webkit-backdrop-filter: none; */
+  /* background: rgba(...) ← remove any rgba with opacity */
+}
+
+
+
+/* Image wrapper — dark bg to prevent edge bleed */
+.service-card-img-wrap {
+  flex: 1;
+  position: relative;
+  margin: 10px;
+  padding: 16px;        /* ← breathing room all around */
+  overflow: hidden;
+  border-radius: 0 0 22px 22px;
+  background: #fdfdfd;  /* ← white background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height:20px;    /* ← controls the white area height */
+}
+
+.service-card-img {
+  width: 100%;           /* ← image smaller than wrap */
+  height: 290px;        /* ← medium size */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  animation: imageFloat 4s ease-in-out infinite;
+}
+
+@keyframes imageFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+/* Arrow */
+/* Arrow */
+/* ─── Arrow ───────────────────────────────────────────── */
+.service-card-arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9;
+  width: 72px;
+  height: 72px;
+  background: #fff;
+  border-radius: 50% 0 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.service-card-arrow::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #0d0d14;
+  /* ← UP arrow default */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='19' x2='12' y2='5'/%3E%3Cpolyline points='5 12 12 5 19 12'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition:
+    background-color 0.3s ease,
+    transform        0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card hover — orange + rotate to → right */
+.service-card:hover .service-card-arrow::after {
+  background-color: #f4845f;
+  transform: rotate(90deg);     /* ↑ rotates to → */
+}
+
+/* Direct arrow hover — darker */
+.service-card-arrow:hover::after {
+  background-color: #c0392b;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Dots */
+
+.service-card-img-wrap a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.service-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.service-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: background 0.2s, width 0.3s;
+  padding: 0;
+}
+
+.service-dot--active {
+  background: #f4845f;
+  width: 28px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-section {
+    padding: 60px 24px;
+  }
+  .service-header {
+    flex-direction: column;
+  }
+  .service-cards {
+    flex-direction: column;
+  }
+  .service-card-img {
+    height: 200px;
+  }
+}

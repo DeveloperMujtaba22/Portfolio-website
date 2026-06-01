@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+/* ─── Section ─────────────────────────────────────────── */
+.blog-section {
+  background: #f0eeea;
+  padding: 100px 90px;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+.blog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.blog-title {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 400;
+  color: #313135;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.blog-title-bold {
+  font-weight: 800;
+}
+
+/* ─── See All ─────────────────────────────────────────── */
+.blog-see-all {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 15px 46px;
+  background: #ee6a3d;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.blog-see-all:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+/* ─── Grid ────────────────────────────────────────────── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ─── Card ────────────────────────────────────────────── */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(6px);
+  cursor: pointer;
+  transition:
+    opacity   0.7s ease,
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter    0.7s ease;
+}
+
+.blog-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ─── Image wrap ──────────────────────────────────────── */
+.blog-card-img-wrap {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid var(--card-color);  /* ← border thickness */
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding: 18px;                          /* ← small padding inside */
+  background: var(--card-color);         /* ← padding area = card color */
+}
+
+.blog-card:hover .blog-card-img-wrap {
+  transform: translateY(-6px);
+}
+
+/* ─── Image ───────────────────────────────────────────── */
+.blog-card-img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 18px;                   /* ← inner radius */
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-img {
+  transform: scale(1.05);
+}
+
+/* ─── Arrow ───────────────────────────────────────────── */
+.blog-card-arrow {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50% 0 18px 0;
+  background: #fff;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+
+.blog-card-arrow::before {
+  content: '↑';                  /* ← up arrow default */
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background  0.3s ease,
+    transform   0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* On card hover — rotate to → right */
+.blog-card:hover .blog-card-arrow::before {
+  background: #f4845f;
+  transform: rotate(90deg);      /* ↑ rotates to → */
+}
+
+/* On direct arrow hover — darker + bigger */
+.blog-card-arrow:hover::before {
+  background: #c0392b;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ─── Info ────────────────────────────────────────────── */
+.blog-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 4px;
+}
+
+/* ─── Category ────────────────────────────────────────── */
+.blog-card-category {
+  display: inline-block;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #333;
+  width: fit-content;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.blog-card-category:hover {
+  background: #f4845f;
+  color: #fff;
+  border-color: #f4845f;
+}
+
+/* ─── Meta ────────────────────────────────────────────── */
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-meta-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.blog-meta-text {
+  font-size: 18px;
+  color: #777;
+  font-weight: 200;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.blog-meta-text:hover {
+  color: #f4845f;
+}
+
+/* ─── Title ───────────────────────────────────────────── */
+.blog-card-title {
+  font-size: clamp(1rem, 1.8vw, 2.5rem);
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.blog-card-title a {
+  text-decoration: none;
+  color: #1a1a2e;
+  transition: color 0.3s ease;
+}
+
+.blog-card-title a:hover {
+  color: #f4845f;
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .blog-section { padding: 80px 48px; }
+  .blog-grid    { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .blog-section  { padding: 60px 28px; gap: 36px; }
+  .blog-header   { flex-direction: column; gap: 20px; }
+  .blog-grid     { grid-template-columns: 1fr; gap: 28px; }
+  .blog-card-img { height: 220px; }
+}
+
+@media (max-width: 480px) {
+  .blog-section { padding: 50px 20px; }
+  .blog-see-all { width: 100%; text-align: center; }
+}

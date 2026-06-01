@@ -15,11 +15,11 @@ const NavBar = () => {
   const navLinks = [
     { label: 'Home',    path: '/' },
     { label: 'About',   path: '/about' },   // ← separate page
-    { label: 'Service', path: '/service1' },
+    { label: 'Service', path: '/service' },
     { label: 'Resume',  path: '/resume' },
-    { label: 'Project', path: '/project1' },
-    { label: 'Blogs',   path: '/#blogs' },
-    { label: 'Contact', path: '/#contact' },
+    { label: 'Project', path: '/project' },
+    { label: 'Blogs',   path: '/blog' },
+    { label: 'Contact', path: '/contact' },
   ]
   return (
     <>

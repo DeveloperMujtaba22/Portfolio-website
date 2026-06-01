@@ -1,116 +1,171 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Blog.css';
+import Footer from '../Footer/Footer';
 
 const posts = [
   {
     id: 1,
     category: 'Skill Development',
+    categoryColor: '#e85d1a',
     author: 'Admin',
+    authorImg: '/assets/mujtaba2.png',
     date: '14 May 2026',
     title: 'Switching to a Difficult Skill: Is It Worth It?',
+    excerpt: 'Why choosing a hard skill can completely transform your career growth.',
     image: '/assets/ui-ux.png',
     color: '#7c3aed',
     link: '#',
   },
   {
     id: 2,
-    category: 'Development',
+    category: 'Career Growth',
+    categoryColor: '#e85d1a',
     author: 'Admin',
+    authorImg: '/assets/mujtaba2.png',
     date: '14 May 2026',
-    title: 'How Many Projects Are Enough to Build Strong Skills?',
+    title: 'The Real Challenges of Mastering a Skill',
+    excerpt: 'What no one tells you about becoming truly skilled in your field.',
     image: '/assets/web-dev.png',
     color: '#0ea5e9',
     link: '#',
+    // titleOrange: true,
   },
   {
     id: 3,
-    category: 'Motivation',
+    category: 'Development',
+    categoryColor: '#e85d1a',
     author: 'Admin',
+    authorImg: '/assets/mujtaba2.png',
     date: '14 May 2026',
-    title: 'How Many Rejections Are Acceptable?',
+    title: 'How Many Projects Are Enough to Build Strong Skills?',
+    excerpt: 'Understanding the difference between practice and real expertise.',
     image: '/assets/backend.png',
-    color: '#f4845f',
+    color: '#e85d1a',
     link: '#',
   },
+   {
+    id: 4,
+    category: 'Motivation',
+    categoryColor: '#d93f20',
+    author: 'Admin',
+    authorImg: '/assets/mujtaba2.png',
+    date: '14 May 2026',
+    title: 'How Many Rejections Are Acceptable?',
+    excerpt: 'Turning rejection into redirection in your professional journey..',
+    image: '/assets/backend.png',
+    color: '#d93131',
+    link: '#',
+  },
+  
 ];
+
+const filters = ['All', 'Career Growth', 'Development', 'More'];
 
 const Blog = () => {
   const cardRefs = useRef([]);
   const [visible, setVisible] = useState([]);
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const observers = cardRefs.current.map((el, i) => {
+      if (!el) return null;
       const obs = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisible(prev => [...new Set([...prev, i])]);
-          } else {
-            setVisible(prev => prev.filter(v => v !== i));
-          }
+          if (entry.isIntersecting) setVisible(prev => [...new Set([...prev, i])]);
+          else setVisible(prev => prev.filter(v => v !== i));
         },
-        { threshold: 0.2 }
+        { threshold: 0.15 }
       );
-      if (el) obs.observe(el);
+      obs.observe(el);
       return obs;
     });
-    return () => observers.forEach(o => o.disconnect());
+    return () => observers.forEach(o => o && o.disconnect());
   }, []);
 
- return (
-    <section id="blog" className="blog-section">
+  const filtered = posts.filter(p => {
+    const matchFilter = activeFilter === 'All' || p.category === activeFilter;
+    const matchSearch = p.title.toLowerCase().includes(search.toLowerCase());
+    return matchFilter && matchSearch;
+  });
 
-      {/* Header */}
-      <div className="blog-header">
-        <h2 className="blog-title">
-          From my<br />
-          <span className="blog-title-bold">Blog post</span>
-        </h2>
-        <a href="#" className="blog-see-all">See All</a>
+  return (
+    <>
+    <section className="blog-section">
+
+      {/* ── Heading ── */}
+      <div className="blog-heading-row">
+        <h1 className="blog-main-title">
+          <span className="bmt-black">INSIGHTS </span>
+          <span className="bmt-orange">&amp;</span>
+          <br />
+          <span className="bmt-outline"><em>STORIES.</em></span>
+        </h1>
       </div>
 
-      {/* Cards */}
+      {/* ── Filters + Search ── */}
+      <div className="blog-controls">
+        <div className="blog-filters">
+          {filters.map(f => (
+            <button
+              key={f}
+              className={`blog-filter-btn ${activeFilter === f ? 'blog-filter-btn--active' : ''}`}
+              onClick={() => setActiveFilter(f === 'More' ? 'All' : f)}
+            >
+              {f} {f === 'More' && <span style={{ fontSize: 12 }}>▾</span>}
+            </button>
+          ))}
+        </div>
+      
+      </div>
+
+      {/* ── Cards ── */}
       <div className="blog-grid">
-        {posts.map((post, i) => (
+        {filtered.map((post, i) => (
           <div
-            className={`blog-card ${visible.includes(i) ? 'blog-card--visible' : ''}`}
             key={post.id}
+            className={`blog-card ${visible.includes(i) ? 'blog-card--visible' : ''}`}
             ref={el => (cardRefs.current[i] = el)}
             style={{ transitionDelay: `${i * 0.15}s` }}
           >
-            {/* Image with colored border */}
-            <div
-              className="blog-card-img-wrap"
-              style={{ '--card-color': post.color }}
-            >
+            {/* Image */}
+            <div className="blog-card-img-wrap" style={{ '--card-color': post.color }}>
               <img src={post.image} alt={post.title} className="blog-card-img" />
-
-              {/* ONE arrow only — inside image */}
               <a href={post.link} className="blog-card-arrow" aria-label="Read post" />
-
             </div>
 
             {/* Info */}
             <div className="blog-card-info">
-              <span className="blog-card-category">{post.category}</span>
-
               <div className="blog-card-meta">
-                <span className="blog-meta-dot" style={{ background: post.color }} />
-                <span className="blog-meta-text">{post.author}</span>
-                <span className="blog-meta-dot" style={{ background: post.color }} />
-                <span className="blog-meta-text">{post.date}</span>
+                <span className="blog-card-category" style={{ color: post.categoryColor }}>
+                  {post.category.toUpperCase()}
+                </span>
+                <span className="blog-meta-dot" />
+                <span className="blog-meta-date">{post.date}</span>
               </div>
 
-              {/* ← fixed: just title text, no arrow here */}
-              <h3 className="blog-card-title">
-                <a href={post.link}>{post.title}</a>
+              <h3 className="blog-card-title" style={{ color: post.titleOrange ? '#e85d1a' : '#111' }}>
+                <a href={post.link} style={{ color: 'inherit' }}>{post.title}</a>
               </h3>
 
+              <p className="blog-card-excerpt">{post.excerpt}</p>
+
+              <div className="blog-card-author">
+                <img src={post.authorImg} alt={post.author} className="blog-author-img" />
+                <span className="blog-author-name">{post.author}</span>
+              </div>
             </div>
           </div>
         ))}
       </div>
+      
 
     </section>
+
+     <Footer />   {/* ✅ section ke bahar, fragment ke andar */}
+        </>
+
+   
   );
 };
 

@@ -1,279 +1,398 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
-
-.service-wrapper {
-  border-radius: 80px;
-  overflow: hidden;
-  margin: 0;
-  background-color: #0d0d14;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.service-section {
+/* ─── Hero ────────────────────────────────────────────── */
+.s1-hero {
   position: relative;
-  min-height: 100vh;
-  padding: 80px 60px;
-  font-family: 'Outfit', sans-serif;
-  overflow: hidden;
+  height: 70vh;
+  min-height: 400px;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;            /* ← text at bottom */
   justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-  gap: 48px;
-  /* ← remove background-image from here */
+  overflow: hidden;
+  padding: 0 40px 60px;             /* ← bottom padding */
+  border-radius: 0 0 50px 50px;
 }
 
-/* Blurred background via pseudo-element */
-.service-section::before {
+/* Blurred background via pseudo */
+.s1-hero::before {
   content: '';
   position: absolute;
-  inset: -20px; /* slightly larger to hide blur edges */
-  background-image: url('assets/service-bg.png');
+  inset: -20px;
+  background-image: url('/assets/service-bg1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(2px); /* ← adjust blur amount here */
+  filter: blur(3px);               /* ← blur amount */
+  transform: scale(1.05);          /* ← hide blur edges */
   z-index: 0;
 }
 
-.service-blob {
+/* Dark overlay */
+.s1-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* ← darkness */
+  z-index: 1;
+}
+
+/* ─── Content — bottom ────────────────────────────────── */
+.s1-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* ─── Title ───────────────────────────────────────────── */
+.s1-title {
+  font-size: clamp(3.5rem, 8vw, 7rem);   /* ← BIG */
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 20px;
+  line-height: 1;
+  letter-spacing: -2px;
+  opacity: 0;
+  animation: titleDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+}
+
+.s1-title-orange {
+  color: #e8623a;
+  display: block;
+  opacity: 0;
+  animation: titleDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+}
+
+/* ─── Description ─────────────────────────────────────── */
+.s1-desc {
+  font-size: clamp(14px, 1.6vw, 18px);
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 600px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.7s forwards;
+}
+
+/* ─── Blobs ───────────────────────────────────────────── */
+.s1-blob {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
-.service-blob--tl {
-  width: 420px;
-  height: 420px;
+.s1-blob--left {
+  width: 380px;
+  height: 380px;
   background: radial-gradient(circle, #f4845f 0%, transparent 70%);
-  top: -120px;
-  left: -80px;
-  opacity: 0.6;
-}
-
-.service-blob--tr {
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, #f4845f 0%, transparent 70%);
-  top: 0px;
-  right: 80px;
-  opacity: 0.45;
-}
-
-.service-blob--br {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #c0392b 0%, transparent 70%);
-  bottom: -150px;
-  right: -120px;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
   opacity: 0.5;
+  animation: blobDrift 6s ease-in-out infinite;
 }
 
-.service-header,
-.service-cards,
-.service-dots {
-  position: relative;
-  z-index: 2;
+.s1-blob--right {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #c0392b 0%, transparent 70%);
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.45;
+  animation: blobDrift 6s ease-in-out infinite 1.5s;
 }
 
-/* Header */
-.service-header {
+/* ─── Keyframes ───────────────────────────────────────── */
+@keyframes titleDrop {
+  0%   { opacity: 0; transform: translateY(-40px) scale(1.1); filter: blur(8px); }
+  60%  { opacity: 1; transform: translateY(6px)   scale(0.98); filter: blur(0);  }
+  100% { opacity: 1; transform: translateY(0)     scale(1);                      }
+}
+
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+
+@keyframes blobDrift {
+  0%, 100% { transform: translateY(-50%) scale(1);    }
+  50%       { transform: translateY(-60%) scale(1.1);  }
+}
+
+
+/* ==================================================================== */
+
+/* ─── Filter bar ──────────────────────────────────────── */
+.s1-filter-wrap {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  padding: 100px 80px;
+  background: #f0eeea;
 }
 
-.service-title {
-  font-size: clamp(3rem, 6vw, 4rem);
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-  white-space: nowrap;
-  margin-top: -30px;
-}
-
-.service-highlight {
-  color: #f4845f;
-}
-
-.service-desc {
-  max-width: 420px;
-  font-size: 14px;
-  color: #aaa;
-  line-height: 1.7;
-  margin: 6px 0 0;
-}
-
-/* Cards */
-.service-cards {
+.s1-filters {
   display: flex;
-  gap: 80px;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
-.service-card {
-  flex: 1;
-  border-radius: 24px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 2;
+.s1-filter-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: transparent;
+  color: #666;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.s1-filter-btn--active {
+  background: #e8623a;
+  color: #fff;
+}
+
+.s1-filter-btn:hover:not(.s1-filter-btn--active) {
+  background: #f0eeea;
+  color: #111;
+}
+
+.s1-filter-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+/* ─── Cards grid ──────────────────────────────────────── */
+.s1-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 58px;
+  padding: 0 80px 80px;
+  background: #f0eeea;
+}
+
+/* ─── Card ────────────────────────────────────────────── */
+.s1-card {
+  background: #171717;
+  border-radius: 28px;
+  padding: 28px 28px 0;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(29px);           
-  /* -webkit-backdrop-filter: blur(12px); */   /* ← comment out */
-  /* border: 1.5px solid rgba(255, 255, 255, 0.4); */ /* ← remove or keep subtle */
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(244, 132, 95, 0.15);
-}
-
-/* Title at top */
-.service-card-title {
-  font-size: 35px;
-  font-weight: 700;
-  color: #fff;
-  display: block;
-  padding: 22px 22px 18px;
-  background: #151516; /* ← solid dark, no blur */
-  position: relative;
-  z-index: 3;
-  margin-bottom: -1px;
-  /* Remove these if present: */
-  /* backdrop-filter: none; */
-  /* -webkit-backdrop-filter: none; */
-  /* background: rgba(...) ← remove any rgba with opacity */
-}
-
-
-
-/* Image wrapper — dark bg to prevent edge bleed */
-.service-card-img-wrap {
-  flex: 1;
-  position: relative;
-  margin: 10px;
-  padding: 16px;        /* ← breathing room all around */
+  gap: 16px;
+  cursor: pointer;
   overflow: hidden;
-  border-radius: 0 0 22px 22px;
-  background: #fdfdfd;  /* ← white background */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: cardFadeUp 0.5s ease both;
+}
+
+.s1-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Card top ────────────────────────────────────────── */
+.s1-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.s1-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #2a2a2a;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height:20px;    /* ← controls the white area height */
+  font-size: 18px;
+  color: #e8623a;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.3s ease;
 }
 
-.service-card-img {
-  width: 100%;           /* ← image smaller than wrap */
-  height: 290px;        /* ← medium size */
+.s1-card-icon--active {
+  background: #e8623a;
+  border-color: #e8623a;
+}
+
+.s1-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #888;
+  background: #2a2a2a;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+/* ─── Card title ──────────────────────────────────────── */
+.s1-card-title {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.s1-card-title--active {
+  color: #e8623a;
+}
+
+.s1-card:hover .s1-card-title {
+  color: #e8623a;
+}
+
+/* ─── Card desc ───────────────────────────────────────── */
+.s1-card-desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Card image ──────────────────────────────────────── */
+.s1-card-img-wrap {
+  position: relative;
+  border-radius: 50px 50px 0 0;     /* ← top rounded only */
+  overflow: hidden;
+  background: #ffffffed;               /* ← white background */
+  margin: 8px -18px 0;              /* ← flush to card sides */
+  padding: 16px 26px 0;             /* ← breathing room */
+  flex: 1;
+}
+
+.s1-card-img {
+  width: 100%;
+  height: 240px;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   display: block;
-  margin: 0 auto;
-  padding: 0;
-  border: none;
-  animation: imageFloat 4s ease-in-out infinite;
+  border-radius: 2px 2px 0 0;     /* ← top radius on image */
+  /* transition: transform 0.5s ease; */
+  margin-top: 10px;
 }
 
-@keyframes imageFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-/* Arrow */
-/* Arrow */
+
+
 /* ─── Arrow ───────────────────────────────────────────── */
-.service-card-arrow {
+.s1-card-arrow {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  z-index: 9;
-  width: 72px;
-  height: 72px;
+  bottom: -3px;
+  right: -1px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50% 0 0 0;         /* ← top-left curve */
   background: #fff;
-  border-radius: 50% 0 18px 0;
+  font-size: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border: none;
+  z-index: 3;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.service-card-arrow::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 48px;
+.s1-card-arrow::before {
+  content: '↑';
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  background-color: #0d0d14;
-  /* ← UP arrow default */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='19' x2='12' y2='5'/%3E%3Cpolyline points='5 12 12 5 19 12'/%3E%3C/svg%3E");
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition:
-    background-color 0.3s ease,
-    transform        0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Card hover — orange + rotate to → right */
-.service-card:hover .service-card-arrow::after {
-  background-color: #f4845f;
-  transform: rotate(90deg);     /* ↑ rotates to → */
-}
-
-/* Direct arrow hover — darker */
-.service-card-arrow:hover::after {
-  background-color: #c0392b;
-  transform: rotate(90deg) scale(1.1);
-}
-
-/* Dots */
-
-.service-card-img-wrap a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.service-dots {
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 28px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 8px;
+  transition:
+    background 0.3s ease,
+    transform  0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.service-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  transition: background 0.2s, width 0.3s;
-  padding: 0;
+.s1-card:hover .s1-card-arrow::before {
+  background: #e8623a;
+  transform: rotate(45deg);
 }
 
-.service-dot--active {
-  background: #f4845f;
-  width: 28px;
-  border-radius: 10px;
+/* /////////////////////////////////// */
+
+.s1-card:hover .s1-card-icon {
+  animation: iconFlip 0.5s ease forwards;
 }
 
-/* Responsive */
+@keyframes iconFlip {
+  0%   { transform: perspective(400px) rotateY(0deg);    }
+  50%  { transform: perspective(400px) rotateY(90deg);   }
+  100% { transform: perspective(400px) rotateY(0deg);    }
+}
+
+/* Desc slides in from left */
+.s1-card-desc {
+  opacity: 0.7;
+  transform: translateX(0);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.s1-card:hover .s1-card-desc {
+  opacity: 1;
+  transform: translateX(6px);
+}
+
+/* Tag pops */
+.s1-card-tag {
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.s1-card:hover .s1-card-tag {
+  background: #e8623a;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Image tilt */
+.s1-card:hover .s1-card-img {
+  animation: imgTilt 4s ease-in-out infinite;
+}
+
+@keyframes imgTilt {
+  0%, 100% { transform: perspective(600px) rotateX(0deg)  scale(1);    }
+  50%       { transform: perspective(600px) rotateX(2deg)  scale(1.04); }
+}
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .s1-cards       { grid-template-columns: repeat(2,1fr); padding: 0 48px 60px; }
+  .s1-filter-wrap { padding: 28px 48px; }
+}
+
 @media (max-width: 768px) {
-  .service-section {
-    padding: 60px 24px;
+  .s1-cards        { grid-template-columns: 1fr; padding: 0 24px 40px; }
+  .s1-filter-wrap  { padding: 20px 24px; flex-direction: column; gap: 16px; }
+}
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .s1-hero {
+    height: 60vh;
+    padding: 0 24px 40px;
   }
-  .service-header {
-    flex-direction: column;
-  }
-  .service-cards {
-    flex-direction: column;
-  }
-  .service-card-img {
-    height: 200px;
+
+  .s1-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    letter-spacing: -1px;
   }
 }

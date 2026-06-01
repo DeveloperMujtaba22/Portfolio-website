@@ -2,18 +2,20 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './Components/NavBar'
 import Hero from './Sections/Hero/Hero'
 import About from './Sections/About/About'
-import Service from './Sections/Service/Service'
+import Service2 from './Sections/Service2/Service2'
 import Skills from './Sections/Skill/Skill' 
 import Experience from './Sections/Experience/Experience'
 import WhyHire from './Sections/WhyHire'
-import Project from './Sections/Project/Project'
+import Project2 from './Sections/Project2/Project2'
 import Stack from './Sections/Stack/Stack'
-import Contact from './Sections/Contact/Contact'
-import Blog from './Sections/Blog/Blog'
+import Contact1 from './Sections/Contact1/Contact1'
+import Blog2 from './Sections/Blog2/Blog2'
 import Footer from './Sections/Footer/Footer'
-import Service1 from './Sections/Service1/Service1'
+import Service from './Sections/Service/Service'
 import Resume from './Sections/Resume/Resume'
-import Project1 from './Sections/Project1/Project1'
+import Project from './Sections/Project/Project'
+import Blog from './Sections/Blog/Blog'
+import Contact from './Sections/Contact/Contact'
 
 const App = () => {
   return (
@@ -23,21 +25,23 @@ const App = () => {
         <Route path="/" element={
           <>
             <Hero />
-            <Service />
+            <Service2 />
             <Skills />
             <Experience />
             <WhyHire />
-            <Project />
+            <Project2 />
             <Stack />
-            <Contact />
-            <Blog />
+            <Contact1 />
+            <Blog2 />
             <Footer />
           </>
         } />
         <Route path="/about" element={<About />} />
-        <Route path="/service1" element={<Service1 />} />
+        <Route path="/service" element={<Service />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="/project1" element={<Project1 />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
 
       </Routes>
     </>
