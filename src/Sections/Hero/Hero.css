@@ -240,23 +240,39 @@
 }
 
 .btn-feedback {
-  background: #1a1a24;
+  background: linear-gradient(
+    135deg,
+    rgba(38, 40, 44, 0.77),   /* orange tint */
+    rgba(18, 20, 22)        /* dark tint */
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
   padding: 10px 46px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   text-decoration: none;
   font-family: 'Outfit', sans-serif;
   transition: opacity 0.2s;
   white-space: nowrap;
 }
-.feedback-star{
-    color: #f4845f;
-    margin-right: 6px;  
+
+.feedback-star {
+  color: #f4845f;
+  margin-right: 6px;
+  font-size: 17px;
+  filter: drop-shadow(0 0 6px #f4845f);
 }
 
-.btn-feedback:hover { opacity: 0.85; }
+.btn-feedback:hover { opacity: 1.85; }
+
+.desktop-photo {
+  display: block;
+}
+.mobile-photo {
+  display: none;
+}
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
@@ -266,4 +282,64 @@
   .hero-orange-circle { width: 260px; height: 260px; }
   .hero-quote-card,
   .hero-exp-card { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+  .hero-hello-badge {
+    margin-top: 12px;  /* ✅ same value */
+  }
+
+  .hero-big-text {
+    top: 130px;
+  }
+  .hero-big-text h1 {
+    font-size: clamp(2.7rem, 7vw, 2rem);
+    white-space: normal;
+  }
+.hero-big-text h2 {
+  font-size: clamp(2.2rem, 5.5vw, 2rem);
+  line-height: 1.2;
+}
+
+  .hero-hello-badge {
+    top: 80px;
+  }
+
+  /* ── Image swap ── */
+  .desktop-photo {
+    display: none;
+  }
+.mobile-photo {
+  display: block;
+  height: 52vh;
+  max-height: none;
+  min-height: 530px;
+  width: 100vw;
+  max-width: none;
+  object-fit: cover;
+  object-position: top center;
+  margin-bottom: -80px;  /* ✅ niche thora sa space */
+}
+
+  .hero-orange-circle {
+    display: none;
+  }
+
+  .hero-image-wrap {
+    bottom: 80px;        /* ✅ buttons ke upar rahegi photo */
+  }
+
+  .hero-quote-card,
+  .hero-exp-card {
+    display: none;
+  }
+
+  .hero-buttons  { bottom: 70px; }
+  .hero-feedback { bottom: 24px; }
+
+  .btn-portfolio,
+  .btn-hire { display: none; }
 }

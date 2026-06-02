@@ -14,14 +14,13 @@ const Hero = () => {
       </div>
 
       {/* Center image with orange circle */}
-      <div className='hero-image-wrap'>
-        <div className='hero-orange-circle' />
-        <img
-          src='/assets/mujtaba.png'
-          alt='Mujtaba Raza'
-          className='hero-photo'
-        />
-      </div>
+    <div class="hero-image-wrap">
+  <div class="hero-orange-circle"></div>
+  <img src="/assets/mujtaba.png
+
+" alt="Hero" class="hero-photo desktop-photo" />
+  <img src="/assets/mujtaba2.png" alt="Hero" class="hero-photo mobile-photo" />
+</div>
 
       {/* Left quote card */}
       <div className='hero-quote-card'>
