@@ -50,9 +50,9 @@ const NavBar = () => {
   background: rgba(30, 30, 30, 0.95);
           border-radius: 50px;
           padding: 3px 8px 6px 9px;
-          gap: 80px;
+           gap: 20px;   /* 80px → 20px */
           max-width: 1090px;
-          width: 90%;
+          width: 67%;
           box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
           font-family: 'Outfit', sans-serif;
         }
@@ -123,7 +123,7 @@ const NavBar = () => {
         .nav-left {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 20px;
           
         }
 
@@ -131,7 +131,7 @@ const NavBar = () => {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin-left: -60px;
+          margin-left: 0;
         }
 
         @media (max-width: 768px) {

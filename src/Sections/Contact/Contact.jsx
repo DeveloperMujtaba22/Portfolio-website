@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "../Footer/Footer";
+import "./Contact.css";
 
 const ORANGE = "#e8623a";
 const ORANGE_DARK = "#e85c1f";
@@ -127,15 +128,18 @@ const s = {
     transition: "border-color 0.2s, box-shadow 0.2s, background 0.2s",
   },
   textarea: { height: 120, lineHeight: 1.6, resize: "none" },
-  responseBadge: {
-    position: "absolute",
-    bottom: -20,
-    right: 24,
-    background: DARK,
-    color: "#fff",
-    borderRadius: 12,
-    padding: "10px 18px",
-  },
+responseBadge: {
+  position: "absolute",
+  bottom: -20,
+  right: 24,
+  background: DARK,
+  color: "#fff",
+  borderRadius: 12,
+  padding: "10px 18px",
+  animation: "floatBadge 3s ease-in-out infinite",  // ← add this
+},
+
+
   rtLabel: {
     fontSize: 9,
     fontWeight: 600,
