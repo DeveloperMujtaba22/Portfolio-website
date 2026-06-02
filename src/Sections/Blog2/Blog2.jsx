@@ -38,15 +38,14 @@ const Blog = () => {
   const cardRefs = useRef([]);
   const [visible, setVisible] = useState([]);
 
-  useEffect(() => {
+useEffect(() => {
     const observers = cardRefs.current.map((el, i) => {
       const obs = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisible(prev => [...new Set([...prev, i])]);
-          } else {
-            setVisible(prev => prev.filter(v => v !== i));
           }
+          // ✅ else hataya — scroll up pe reset nahi hoga
         },
         { threshold: 0.2 }
       );

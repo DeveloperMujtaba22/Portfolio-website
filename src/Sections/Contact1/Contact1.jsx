@@ -17,6 +17,7 @@ const Contact = () => {
     setTimeout(() => setSent(false), 3000);
     setEmail('');
   };
+  
 
   return (
     <section id="contact" className="contact-section">

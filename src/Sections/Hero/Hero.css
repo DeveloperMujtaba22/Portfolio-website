@@ -331,6 +331,9 @@
   .hero-image-wrap {
     bottom: 80px;        /* ✅ buttons ke upar rahegi photo */
   }
+  .btn-pill-wrap{
+  display: none;
+}
 
   .hero-quote-card,
   .hero-exp-card {
@@ -343,3 +346,4 @@
   .btn-portfolio,
   .btn-hire { display: none; }
 }
+

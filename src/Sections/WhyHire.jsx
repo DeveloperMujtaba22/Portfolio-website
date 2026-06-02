@@ -14,13 +14,16 @@ const WhyHire = () => {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true); // ✅ sirf true — kabhi false nahi hoga
+        }
+      },
       { threshold: 0.3 }
     );
     if (sectionRef.current) obs.observe(sectionRef.current);
     return () => obs.disconnect();
   }, []);
-
   // Count-up animation
   useEffect(() => {
     if (!visible) return;

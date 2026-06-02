@@ -47,7 +47,7 @@
 .service-blob--tl {
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, #f4845f 0%, transparent 70%);
+  /* background: radial-gradient(circle, #f4845f 0%, transparent 70%); */
   top: -120px;
   left: -80px;
   opacity: 0.6;
@@ -56,7 +56,7 @@
 .service-blob--tr {
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, #f4845f 0%, transparent 70%);
+  /* background: radial-gradient(circle, #f4845f 0%, transparent 70%); */
   top: 0px;
   right: 80px;
   opacity: 0.45;
@@ -96,7 +96,7 @@
 }
 
 .service-highlight {
-  color: #f4845f;
+  color: #e8623a;
 }
 
 .service-desc {
@@ -222,7 +222,7 @@
 
 /* Card hover — orange + rotate to → right */
 .service-card:hover .service-card-arrow::after {
-  background-color: #f4845f;
+  background-color: #e8623a;
   transform: rotate(90deg);     /* ↑ rotates to → */
 }
 
@@ -257,7 +257,7 @@
 }
 
 .service-dot--active {
-  background: #f4845f;
+  background: #e8623a;
   width: 28px;
   border-radius: 10px;
 }
@@ -275,5 +275,61 @@
   }
   .service-card-img {
     height: 200px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .service-wrapper {
+    border-radius: 15px;  /* ✅ mobile pe chota border radius */
+  }
+
+  .service-section {
+    padding: 48px 20px;
+    gap: 32px;
+  }
+
+  .service-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .service-title {
+    font-size: 2.9rem;
+    white-space: normal;
+    margin-top: 0;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  /* ── Slider container ── */
+  .service-cards {
+    flex-direction: row;        /* horizontal scroll */
+    gap: 0;
+    overflow: hidden;           /* clip hidden cards */
+    position: relative;
+    width: 100%;
+  }
+
+  .service-card {
+    min-width: 100%;            /* each card full width */
+    flex: 0 0 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card-title {
+    font-size: 24px;
+    padding: 18px 18px 14px;
+  }
+
+  .service-card-img {
+    height: 220px;
+  }
+
+  .service-card-img-wrap {
+    min-height: 10px;
   }
 }

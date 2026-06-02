@@ -68,7 +68,7 @@ const NavBar = () => {
         }
         .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
         .nav-link.active {
-          background: linear-gradient(135deg, #f4845f, #e8623a);
+          background: linear-gradient(135deg, #e8623a, #e8623a);
           color: #fff;
           font-weight: 500;
           box-shadow: 0 4px 16px rgba(244,132,95,0.35);
@@ -80,7 +80,7 @@ const NavBar = () => {
         }
         .brand-avatar {
           width: 40px; height: 40px;
-          background: linear-gradient(135deg, #f4845f, #e8623a);
+          background: linear-gradient(135deg, #e8623a, #e8623a);
           border-radius: 10px;
           display: flex; align-items: center; justify-content: center;
           font-size: 13px; font-weight: 700; color: white;

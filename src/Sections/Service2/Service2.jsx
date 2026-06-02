@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Service2.css';
 
 const services = [
-  { id: 1, title: 'UI/UX Design',     image: '/assets/ui-ux.png',   link: '#' },
-  { id: 2, title: 'Web Development',  image: '/assets/web-dev.png', link: '#' },
-  { id: 3, title: 'Backend Dev',      image: '/assets/backend.png', link: '#' },
+  { id: 1, title: 'UI/UX Design',    image: '/assets/ui-ux.png',   link: '#' },
+  { id: 2, title: 'Web Development', image: '/assets/web-dev.png', link: '#' },
+  { id: 3, title: 'Backend Dev',     image: '/assets/backend.png', link: '#' },
 ];
 
 const Service = () => {
@@ -22,35 +22,31 @@ const Service = () => {
             My <span className="service-highlight">Services</span>
           </h2>
           <p className="service-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc,
-            posuere in justo vulputate, bibendum sodales
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Duis lacus nunc, posuere in justo vulputate, bibendum sodales
           </p>
         </div>
 
+        {/* ✅ translateX se active card show hoga */}
         <div className="service-cards">
-  {services.map((s, i) => (
-    <div className="service-card" key={s.id}>
+          {services.map((s, i) => (
+            <div
+              className="service-card"
+              key={s.id}
+              style={{ transform: `translateX(-${active * 100}%)` }}
+            >
+              <span className="service-card-title">{s.title}</span>
+              <div className="service-card-img-wrap">
+                <a href={s.link} aria-label={s.title}>
+                  <img src={s.image} alt={s.title} className="service-card-img" />
+                </a>
+              </div>
+              <a href={s.link} className="service-card-arrow" aria-label="View service" />
+            </div>
+          ))}
+        </div>
 
-      <span className="service-card-title">{s.title}</span>
-
-      <div className="service-card-img-wrap">
-        <a href={s.link} aria-label={s.title}>
-          <img src={s.image} alt={s.title} className="service-card-img" />
-        </a>
-      </div>
-
-      <a
-        href={s.link}
-        className="service-card-arrow"
-        aria-label="View service"
-      >
-       
-      </a>
-
-    </div>
-  ))}
-</div>
-
+        {/* Dots */}
         <div className="service-dots">
           {services.map((_, i) => (
             <button

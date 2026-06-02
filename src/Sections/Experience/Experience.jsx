@@ -35,9 +35,6 @@ const Experience = () => {
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisible(prev => [...new Set([...prev, i])]);
-          } else {
-            // scroll up — hide again for re-animation
-            setVisible(prev => prev.filter(v => v !== i));
           }
         },
         { threshold: 0.2 }
@@ -53,13 +50,11 @@ const Experience = () => {
       <div className="exp-blob exp-blob--tl" />
       <div className="exp-blob exp-blob--br" />
 
-      {/* Heading */}
       <div className="exp-heading">
         <h2 className="exp-title">MY WORK</h2>
         <h2 className="exp-title exp-title--outline">EXPERIENCE.</h2>
       </div>
 
-      {/* Timeline */}
       <div className="exp-timeline">
         <div className="exp-line" />
 
@@ -69,7 +64,6 @@ const Experience = () => {
             key={exp.id}
             ref={el => (itemRefs.current[i] = el)}
           >
-            {/* Left */}
             <div className="exp-left">
               <p className="exp-company">
                 {exp.company.split('').map((char, ci) => (
@@ -85,13 +79,11 @@ const Experience = () => {
               <p className="exp-period">{exp.period}</p>
             </div>
 
-            {/* Dot */}
             <div className="exp-dot-wrap">
               <div className="exp-dot" />
               <div className="exp-dot-ring" />
             </div>
 
-            {/* Right */}
             <div className="exp-right">
               <h3 className="exp-role">{exp.role}</h3>
               <p className="exp-desc">{exp.desc}</p>

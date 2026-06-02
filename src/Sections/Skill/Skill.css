@@ -34,23 +34,8 @@
 .skill-title em {
   font-style: italic;
   font-weight: 800;
-  background: linear-gradient(
-    90deg,
-    #111 0%,
-    #d66641 40%,
-    #fff 50%,
-    #d35d35 60%,
-    #111 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
-}
-@keyframes shimmer {
-  from { background-position: 200% center; }
-  to   { background-position: -200% center; }
+  -webkit-text-stroke: 2px #11111188;
 }
 
 .skill-desc {
@@ -132,15 +117,95 @@
 }
 
 /* Responsive */
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .skill-section {
     flex-direction: column;
     padding: 60px 24px;
-  }
-  .skill-right {
-    flex-direction: column;
+    gap: 40px;
   }
   .skill-left {
     max-width: 100%;
+  }
+  .skill-right {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .skill-section {
+    padding: 48px 20px;
+    gap: 32px;
+  }
+  .skill-eyebrow{
+    font-size: 17px;
+  }
+
+  .skill-title {
+    font-size: 2rem;
+  }
+
+  .skill-desc {
+    font-size: 15px;
+  }
+
+  .skill-right {
+    flex-direction: row;        /* ✅ 2 columns side by side */
+    gap: 24px;
+    width: 100%;
+  }
+
+  .skill-col {
+    flex: 1;
+    gap: 24px;
+    min-width: 0;               /* ✅ overflow rokne ke liye */
+  }
+
+  .skill-group-label {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .skill-name {
+    font-size: 14px;
+  }
+
+  .skill-pct {
+    font-size: 13px;
+  }
+
+  .skill-item {
+    margin-bottom: 14px;
+  }
+
+  .skill-item-header {
+    margin-bottom: 6px;
+  }
+}
+
+/* ── Small phones (SE, 375px) ── */
+@media (max-width: 375px) {
+  .skill-section {
+    padding: 40px 16px;
+  }
+
+  .skill-right {
+    flex-direction: column;     /* ✅ bohot chote screen pe stack */
+    gap: 20px;
+  }
+
+  .skill-title {
+    font-size: 3.3rem;
+  }
+
+  .skill-name {
+    font-size: 20px;
+  }
+
+  .skill-pct {
+    font-size: 17px;
   }
 }
