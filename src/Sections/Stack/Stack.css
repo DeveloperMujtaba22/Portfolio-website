@@ -1,195 +1,147 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
-/* ─── Reset ─────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── Page Background ────────────────────────────────── */
-body {
+/* ═══════════════════════════════════════════════════════
+   SKILLSET SECTION — dark
+═══════════════════════════════════════════════════════ */
+.skillset-section {
+  position: relative;
   background: #f0eeea;
+  padding: 64px 40px 72px;
+  overflow: hidden;
   font-family: 'Outfit', sans-serif;
 }
 
-/* ═══════════════════════════════════════════════════════
-   SLIDER DOTS
-═══════════════════════════════════════════════════════ */
-.slider-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 18px 0 6px;
+.skillset-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.slider-dot {
-  height: 5px;
-  border-radius: 3px;
-  background: #ccc;
-  transition: all 0.3s ease;
+.skillset-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #000000;
+  opacity: 0.5;
+  animation: starTwinkle ease-in-out infinite;
 }
 
-.slider-dot.active {
-  width: 28px;
-  background: #f4845f;
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.4); }
 }
 
-.slider-dot:not(.active) {
-  width: 8px;
-}
-
-/* ═══════════════════════════════════════════════════════
-   STACK SECTION
-═══════════════════════════════════════════════════════ */
-.stack-section {
-  padding: 12px 0 0;
-  overflow: hidden;
-}
-
-/* ─── Row ─────────────────────────────────────────────── */
-.stack-row {
-  display: flex;
-  align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 18px 0;
-}
-
-.stack-row:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* ─── Label ───────────────────────────────────────────── */
-.stack-label {
-  flex-shrink: 0;
-  width: 220px;
-  padding-left: 32px;
-}
-
-.stack-label span {
-  display: inline-block;
-  background: #fff;
-  border: 1.5px solid #111;
-  border-radius: 50px;
-  padding: 9px 22px;
-  font-size: 12.5px;
+.skillset-heading {
+  position: relative;
+  text-align: center;
+  font-size: 3rem;
   font-weight: 700;
-  color: #111;
-  white-space: nowrap;
-  letter-spacing: 0.2px;
-  cursor: default;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+  font-family: 'Outfit', sans-serif;
 }
 
-.stack-label span:hover {
-  background: #f4845f;
-  color: #fff;
-  border-color: #f4845f;
-}
+.skillset-accent { color: #e8623a; }
 
-/* ─── Track ───────────────────────────────────────────── */
-.stack-track {
-  flex: 1;
-  overflow: hidden;
-  mask-image: none;
-  -webkit-mask-image: none;
-}
-
-/* ─── Items ───────────────────────────────────────────── */
-.stack-items {
+.skillset-grid {
+  position: relative;
   display: flex;
-  align-items: center;
-  width: max-content;
-  animation: marquee 28s linear infinite;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.stack-track--reverse .stack-items {
-  animation: marqueeReverse 28s linear infinite;
-}
-
-
-
-/* ─── Skill Pill (icon + label) ───────────────────────── */
-.skill-pill {
+.skillset-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: #fff;
-  border: 1.5px solid #e0deda;
+  gap: 10px;
+    background: linear-gradient(
+    135deg,
+    rgba(38, 40, 44, 0.137),   /* orange tint */
+    rgba(18, 20, 22, 0.045)        /* dark tint */
+  );
+  border: 1.5px solid rgba(3, 2, 2, 0.502);
   border-radius: 50px;
-  padding: 7px 16px;
-  margin: 0 6px;
-  font-size: 13px;
+  padding: 10px 20px;
+  font-size: 22px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #1b1b1b;
   white-space: nowrap;
   cursor: default;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(6px);
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.2s;
+  animation: pillFadeIn 0.4s ease both;
 }
 
-.skill-pill:hover {
-  border-color: #f4845f;
-  box-shadow: 0 2px 10px rgba(244, 132, 95, 0.2);
+.skillset-pill:hover {
+  border-color: #000000;
+  background: #df481ac1;
+  color: #f0f9ffe9;
+  transform: translateY(-2px);
 }
 
-.skill-pill__icon {
-  width: 20px;
-  height: 20px;
+.skillset-pill__icon {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
-  display: block;
   flex-shrink: 0;
 }
 
-/* ─── Keyframes ───────────────────────────────────────── */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-33.33%); }
-}
-
-@keyframes marqueeReverse {
-  from { transform: translateX(-33.33%); }
-  to   { transform: translateX(0); }
+@keyframes pillFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ═══════════════════════════════════════════════════════
-   PROJECT SECTION
+   PROJECTS SECTION — light grey
 ═══════════════════════════════════════════════════════ */
-.vax-project-content {
+.projects-section {
+  background: #f8ad16 !important;
+  font-family: 'Outfit', sans-serif;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -110px;
+  height: 40vh;  /* only once */
+}
+.projects-content {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
-  animation: vax-fadein 0.15s ease;
+  animation: projFadeIn 0.2s ease;
 }
 
-@keyframes vax-fadein {
+@keyframes projFadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.vax-project-title-row {
+.projects-title-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
 }
 
-.vax-project-title {
-  font-size: 2.7rem;
+.projects-title {
+  font-size: 3.1rem;
   font-weight: 700;
-  color: #1a1a1a;
-  margin: 0;
+  color: #000000;
   line-height: 1.2;
-  margin-top: 60px;
 }
 
-.vax-arrow-btn {
+.projects-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
   width: 44px;
   height: 44px;
   background: #e8682a;
@@ -200,30 +152,46 @@ body {
   transition: background 0.2s, transform 0.2s;
 }
 
-.vax-arrow-btn:hover {
+.projects-arrow:hover {
   background: #cf5820;
   transform: scale(1.08);
 }
 
-.vax-project-desc {
-  font-size: 20px;
+.projects-desc {
+  font-size: 22px;
   color: #555;
   line-height: 1.75;
-  max-width: 880px;
-  margin: 0;
+  max-width: 820px;
 }
 
-.vax-dots {
+.projects-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.projects-tag {
+  background: #fff;
+  border: 1.5px solid #d0cdc8;
+  border-radius: 50px;
+  padding: 5px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+.projects-dots {
   display: flex;
   gap: 8px;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 3rem;
-  margin-top: 1.9rem;
+  margin-top: 2rem;
+  
 }
 
-.vax-dot {
+.projects-dot {
   width: 30px;
   height: 8px;
   border-radius: 4px;
@@ -234,7 +202,7 @@ body {
   padding: 0;
 }
 
-.vax-dot--active {
+.projects-dot--active {
   background: #e8682a;
   width: 40px;
 }
@@ -243,23 +211,12 @@ body {
    RESPONSIVE
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .stack-label {
-    width: 140px;
-    padding-left: 16px;
-  }
+  .skillset-section { padding: 48px 20px 56px; }
+  .skillset-heading { font-size: 1.9rem; margin-bottom: 32px; }
+  .skillset-pill { font-size: 12px; padding: 8px 14px; }
+  .skillset-pill__icon { width: 18px; height: 18px; }
 
-  .stack-label span {
-    font-size: 11px;
-    padding: 7px 14px;
-  }
-
-  .skill-pill {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .skill-pill__icon {
-    width: 16px;
-    height: 16px;
-  }
+  .projects-section { padding: 0 20px 40px; }
+  .projects-title { font-size: 1.8rem; }
+  .projects-desc { font-size: 15px; }
 }
