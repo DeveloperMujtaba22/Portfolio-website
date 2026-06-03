@@ -3,7 +3,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ═══════════════════════════════════════════════════════
-   SKILLSET SECTION — dark
+   SKILLSET SECTION
 ═══════════════════════════════════════════════════════ */
 .skillset-section {
   position: relative;
@@ -59,10 +59,10 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-    background: linear-gradient(
+  background: linear-gradient(
     135deg,
-    rgba(38, 40, 44, 0.137),   /* orange tint */
-    rgba(18, 20, 22, 0.045)        /* dark tint */
+    rgba(38, 40, 44, 0.137),
+    rgba(18, 20, 22, 0.045)
   );
   border: 1.5px solid rgba(3, 2, 2, 0.502);
   border-radius: 50px;
@@ -98,7 +98,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   PROJECTS SECTION — light grey
+   PROJECTS SECTION
 ═══════════════════════════════════════════════════════ */
 .projects-section {
   background: #f0eeea !important;
@@ -109,25 +109,20 @@
   justify-content: center;
   margin-top: -200px;
 }
+
 .projects-content {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   animation: projFadeIn 0.2s ease;
+  width: 100%;
 }
 
 @keyframes projFadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-.projects-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
 }
 
 .projects-title {
@@ -136,13 +131,21 @@
   color: #000000;
   line-height: 1.2;
 }
+.projects-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+}
 
 .projects-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
   background: #e8682a;
   border-radius: 50%;
   color: #fff;
@@ -160,9 +163,10 @@
   font-size: 22px;
   color: #555;
   line-height: 1.75;
-  max-width: 820px;
+  width: 900px;
+  text-align: center;
+  margin: 0 auto;
 }
-
 .projects-tags {
   display: flex;
   flex-wrap: wrap;
@@ -187,7 +191,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
-  
 }
 
 .projects-dot {
@@ -206,61 +209,75 @@
   width: 40px;
 }
 
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — single block, no duplicates
+═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  /* Skillset */
   .skillset-section {
-    padding: 36px 16px 40px;
+    padding: 36px 16px 32px;
+
   }
   .skillset-heading {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 18px;
+  }
+  .skillset-grid {
+    gap: 8px;
   }
   .skillset-pill {
-    font-size: 13px;
-    padding: 7px 13px;
-    gap: 7px;
+    font-size: 12px;
+    padding: 6px 12px;
+    gap: 6px;
   }
   .skillset-pill__icon {
     width: 16px;
     height: 16px;
   }
 
+  /* Projects */
   .projects-section {
-    padding: 24px 16px 36px;
-    margin-top: 0; /* remove the negative margin */
+    padding: 28px 16px 32px;
+    margin-top: -90px;
 
   }
-  .projects-title {
-    font-size: 1.5rem;
+  .projects-content {
+    gap: .35rem;
+    width: 100%;
   }
-.projects-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-}
+  .projects-title-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+  .projects-title {
+    font-size: 36px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.2;
+  }
   .projects-desc {
-    font-size: 24px;
+    font-size: 19px;
+    line-height: 1.7;
+    width: 200%;
+    max-width: 130%;
+    margin-left: -15%;
   }
   .projects-arrow {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
   }
   .projects-dots {
     margin-top: 1.25rem;
+    gap: 6px;
   }
-}
-
-/* ═══════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  .skillset-section { padding: 48px 20px 56px; }
-  .skillset-heading { font-size: 1.9rem; margin-bottom: 32px; }
-  .skillset-pill { font-size: 12px; padding: 8px 14px; }
-  .skillset-pill__icon { width: 18px; height: 18px; }
-
-  .projects-section { padding: 0 20px 40px; }
-  .projects-title { font-size: 1.8rem; }
-  .projects-desc { font-size: 15px; }
+  .projects-dot {
+    width: 24px;
+    height: 7px;
+  }
+  .projects-dot--active {
+    width: 32px;
+  }
 }
