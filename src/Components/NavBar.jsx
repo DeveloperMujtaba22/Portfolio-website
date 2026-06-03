@@ -56,7 +56,7 @@ const NavBar = () => {
           padding: 10px 27px;
           border-radius: 70px;
           font-size: 16px;
-          font-weight: 400;
+          font-weight: 200;
           color: rgba(255,255,255,0.8);
           cursor: pointer;
           transition: color 0.2s, background 0.2s, box-shadow 0.2s;

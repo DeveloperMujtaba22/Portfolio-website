@@ -141,7 +141,7 @@
 }
 
 .contact-ticker-wrap::before {
-  top: 0;
+  top: 38px;
   transform: rotate(-1.5deg);
   transform-origin: left;
 }
@@ -161,8 +161,8 @@
   margin-bottom: 30px;
   width: 110%;
   overflow: hidden;
-  border-top: 15px solid #e8623a;
-  border-bottom: 15px solid #e8623a;
+  border-top: 10px solid #e8623a;
+  border-bottom: 10px solid #e8623a;
 }
 
 .contact-ticker-items {
@@ -181,7 +181,7 @@
   display: inline-flex;
   align-items: center;
   gap: 40px;
-  font-size: clamp(1rem, 2vw, 2.4rem);
+  font-size: clamp(1.7rem, 2vw, 2.4rem);
   font-weight: 900;
   color: #111;
   white-space: nowrap;
@@ -222,6 +222,18 @@
     padding: 16px;
     gap: 12px;
   }
+  .contact-ticker-wrap::before {
+  top: 18px;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
+.contact-ticker-wrap::after {
+  bottom: 15px;
+  transform: rotate(-1.5deg);
+  transform-origin: left;
+}
+
 
   .contact-btn {
     width: 100%;
