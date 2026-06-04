@@ -120,7 +120,7 @@ const NavBar = () => {
         @media (max-width: 768px) {
           .navbar-wrapper { padding: 12px 12px; }
           .navbar-container {
-            width: 100%;
+            width: 97%;
             height: 50px;
             background: rgba(23, 23, 23);
           }
