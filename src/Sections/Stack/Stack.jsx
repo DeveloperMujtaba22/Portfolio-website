@@ -87,7 +87,7 @@
         </section>
 
         {/* ── Projects Section ── */}
-        <section className="projects-section">
+        <section className="projects-section2">
         <div className="projects-content" key={activeProject}>
 
   <div className="projects-title-row">

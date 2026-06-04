@@ -100,14 +100,15 @@
 /* ═══════════════════════════════════════════════════════
    PROJECTS SECTION
 ═══════════════════════════════════════════════════════ */
-.projects-section {
+.projects-section2 {
   background: #f0eeea !important;
+  min-height: 80vh;
   font-family: 'Outfit', sans-serif;
   padding: 40px 48px;
+  margin-top: -90px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -200px;
 }
 
 .projects-content {
@@ -236,14 +237,14 @@
   }
 
   /* Projects */
-  .projects-section {
-    padding: 28px 16px 32px;
-    margin-top: -90px;
+  .projects-section2 {
+    padding: -48px 16px 32px;
 
   }
   .projects-content {
     gap: .35rem;
     width: 100%;
+    margin-top: -90px;
   }
   .projects-title-row {
     flex-direction: column;
@@ -258,7 +259,7 @@
     line-height: 1.2;
   }
   .projects-desc {
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.7;
     width: 200%;
     max-width: 130%;

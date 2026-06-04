@@ -1,4 +1,4 @@
-.projects-section {
+.projects-section1 {
   background: #0a0a0a;
   min-height: 100vh;
   padding: 140px 80px;
@@ -35,6 +35,7 @@
   display: flex;
   gap: 12px;
   margin-bottom: 48px;
+  flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -157,7 +158,7 @@
 .hover-btn.live { background: #e8623a; color: #fff; }
 .hover-btn.gh   { background: #fff;    color: #0a0a0a; }
 
-/* ---------- Card Content (bahar, neeche) ---------- */
+/* ---------- Card Content ---------- */
 .card-content {
   padding: 18px 20px 22px;
   background: #111118;
@@ -190,4 +191,109 @@
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — Tablet (≤1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .projects-section1 {
+    padding: 100px 48px;
+  }
+
+  .projects-title-solid,
+  .projects-title-ghost {
+    font-size: 56px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile (≤768px)
+   ============================================ */
+@media (max-width: 768px) {
+  .projects-section1 {
+    padding: 80px 24px 60px;
+  }
+
+  .projects-label {
+    font-size: 13px;
+  }
+
+  .projects-title-solid,
+  .projects-title-ghost {
+    font-size: 42px;
+  }
+
+  .projects-title-ghost {
+    margin-bottom: 28px;
+  }
+
+  .filters {
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    font-size: 11px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card-img-area {
+    height: 220px;
+  }
+
+  /* On touch devices, always show the hover buttons */
+  .card-links-hover {
+    opacity: 1;
+    background: rgba(10, 10, 10, 0.45);
+  }
+
+  .hover-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Small Mobile (≤480px)
+   ============================================ */
+@media (max-width: 480px) {
+  .projects-section1 {
+    padding: 70px 16px 50px;
+  }
+
+  .projects-title-solid,
+  .projects-title-ghost {
+    font-size: 34px;
+  }
+
+  .cards-grid {
+    gap: 16px;
+  }
+
+  .card-img-area {
+    height: 200px;
+  }
+
+  .card-content {
+    padding: 14px 16px 18px;
+  }
 }

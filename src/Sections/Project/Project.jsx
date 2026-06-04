@@ -81,7 +81,7 @@ const Project1 = () => {
 
   return (
     <>
-      <section className="projects-section">
+      <section className="projects-section1">
         <p className="projects-label">Featured Work</p>
         <h1 className="projects-title-solid">SELECTED</h1>
         <h1 className="projects-title-ghost">ARTIFACTS.</h1>
