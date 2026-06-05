@@ -29,7 +29,7 @@
   content: '';
   position: absolute;
   inset: -20px; /* slightly larger to hide blur edges */
-  background-image: url('assets/service-bg.png');
+  background-image: url('assets/service-bg1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
