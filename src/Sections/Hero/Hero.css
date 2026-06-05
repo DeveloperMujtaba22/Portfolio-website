@@ -286,7 +286,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 98vh;
+    min-height: 97vh;
   }
   .hero-hello-badge {
     margin-top: 12px;  /* ✅ same value */
