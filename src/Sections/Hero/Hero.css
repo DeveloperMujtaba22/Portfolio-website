@@ -286,14 +286,14 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 100vh;
+    min-height: 98vh;
   }
   .hero-hello-badge {
     margin-top: 12px;  /* ✅ same value */
   }
 
   .hero-big-text {
-    top: 130px;
+    top: 140px;
   }
   .hero-big-text h1 {
     font-size: clamp(2.7rem, 7vw, 2rem);
