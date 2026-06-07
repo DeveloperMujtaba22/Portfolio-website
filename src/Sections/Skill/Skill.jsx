@@ -1,61 +1,78 @@
-  import React from 'react';
-  import './Skill.css';
+import React, { useState } from 'react';
+import './Skill.css';
 
-  const skills = {
-    BACKEND:          [{ name: 'Node Js / Express', pct: 70 }],
-    FRAMEWORK:        [{ name: 'Laravel', pct: 80 }],
-    TOOLS:            [{ name: 'Canva', pct: 60 }, { name: 'Figma', pct: 80 }],
-    'VERSION CONTROL':[{ name: 'Github', pct: 80 }],
-    DATABASES:        [{ name: 'MongoDB', pct: 80 }, { name: 'My SQL', pct: 80 }],
-    FRONTEND:         [{ name: 'Angular', pct: 70 }, { name: 'React / Redux', pct: 90 }],
-    'UI LIBRARIES':   [{ name: 'Shadcn', pct: 85 }, { name: 'Tailwind CSS', pct: 80 }],
-  };
+const SKILLS = [
+  { name: 'React.js',     pct: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Next.js',      pct: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  { name: 'Node.js',      pct: 70, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'Express.js',   pct: 70, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+  { name: 'MongoDB',      pct: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'TypeScript',   pct: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'Tailwind CSS', pct: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'HTML5',        pct: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'MySQL',        pct: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'Redis',        pct: 65, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+  { name: 'Git',          pct: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+  { name: 'SCSS',         pct: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
+  { name: 'Python',       pct: 65, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+];
 
-  const SkillBar = ({ name, pct }) => (
-    <div className="skill-item">
-      <div className="skill-item-header">
-        <span className="skill-name">{name}</span>
-        <span className="skill-pct">{pct}%</span>
-      </div>
-      <div className="skill-track">
-        <div className="skill-fill" style={{ '--pct': `${pct}%` }} />
-      </div>
-    </div>
-  );
+const STARS = Array.from({ length: 60 }, (_, i) => ({
+  id: i,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: Math.random() * 2.5 + 0.5,
+  delay: Math.random() * 4,
+  dur: Math.random() * 3 + 2,
+}));
 
-  const SkillGroup = ({ label, items }) => (
-    <div className="skill-group">
-      <p className="skill-group-label">{label}</p>
-      {items.map(s => <SkillBar key={s.name} {...s} />)}
-    </div>
-  );
+const Skill = () => {
+  const [hovered, setHovered] = useState(null);
 
-  const Skill = () => (
-    <section id="skill" className="skill-section">
-      <div className="skill-left">
-        <p className="skill-eyebrow">EXPERTISE</p>
-      <h2 className="skill-title">
-    MY <em>GRIP</em><br />ON TOOLS.
-  </h2>
-        <p className="skill-desc">
-          A showcase of my technical proficiency across the full stack and creative design tools.
+  return (
+    <>
+      <section className="skillset-section">
+        <div className="skillset-stars" aria-hidden="true">
+          {STARS.map(s => (
+            <span key={s.id} className="skillset-star" style={{
+              left: `${s.x}%`, top: `${s.y}%`,
+              width: s.size, height: s.size,
+              animationDelay: `${s.delay}s`, animationDuration: `${s.dur}s`,
+            }} />
+          ))}
+        </div>
+
+        <h2 className="skillset-heading">Skills</h2>
+        <p className="skillset-subheading">
+         Hover over a skill for currency proficiency
         </p>
-      </div>
 
-      <div className="skill-right">
-        <div className="skill-col">
-          <SkillGroup label="BACKEND"         items={skills.BACKEND} />
-          <SkillGroup label="FRAMEWORK"       items={skills.FRAMEWORK} />
-          <SkillGroup label="TOOLS"           items={skills.TOOLS} />
-          <SkillGroup label="VERSION CONTROL" items={skills['VERSION CONTROL']} />
+        <div className="skillset-grid">
+          {SKILLS.map((skill, i) => (
+            <span
+              key={i}
+              className={`skillset-pill${hovered === i ? ' skillset-pill--hovered' : ''}`}
+              style={{ animationDelay: `${i * 0.05}s` }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {hovered === i ? (
+                <span className="skillset-pill__pct">{skill.pct}%</span>
+              ) : (
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="skillset-pill__icon"
+                  onError={e => { e.target.style.display = 'none'; }}
+                />
+              )}
+              {skill.name}
+            </span>
+          ))}
         </div>
-        <div className="skill-col">
-          <SkillGroup label="DATABASES"    items={skills.DATABASES} />
-          <SkillGroup label="FRONTEND"     items={skills.FRONTEND} />
-          <SkillGroup label="UI LIBRARIES" items={skills['UI LIBRARIES']} />
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
+};
 
-  export default Skill;
+export default Skill;

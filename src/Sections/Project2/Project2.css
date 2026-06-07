@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
 
 /* ─── Section ─────────────────────────────────────────── */
 .proj-section {
@@ -30,7 +30,7 @@
 .proj-title {
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
-  color: #111;
+  color: #fff;
   margin: 0;
   line-height: 1.2;
 }
@@ -52,67 +52,36 @@
   letter-spacing: 1px;
   border-radius: 50px;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .proj-see-all:hover {
   background: #c0392b;
   transform: scale(1.06);
-  box-shadow: 0 8px 24px rgba(244, 132, 95, 0.4);
 }
 
 /* ─── Grid ────────────────────────────────────────────── */
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 
 /* ─── Card ────────────────────────────────────────────── */
-/* ─── Card cursor + bottom orange half hover ─────────── */
 .proj-card {
-  border-radius: 28px;
+  border-radius: 24px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(60px);
   filter: blur(6px);
   cursor: pointer;
-  background: transparent;
-  position: relative;          /* ← needed for ::after */
+  background: #1a1830;
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+  position: relative;
   transition:
-    opacity    0.7s ease,
-    transform  0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
-    filter     0.7s ease,
-    box-shadow 0.3s ease;
-}
-
-/* Orange bottom half slides up on hover */
-.proj-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;                 /* ← half the card */
-  background: linear-gradient(
-    to top,
-    rgba(244, 132, 95, 0.85) 0%,
-    rgba(244, 132, 95, 0.3)  60%,
-    transparent              100%
-  );
-  opacity: 0;
-  transform: translateY(100%); /* ← starts below */
-  transition:
-    opacity   0.4s ease,
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 3;
-  pointer-events: none;
-  border-radius: 0 0 28px 28px;
-}
-
-.proj-card:hover::after {
-  opacity: 1;
-  transform: translateY(0);    /* ← slides up into view */
+    opacity   0.7s ease,
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter    0.7s ease;
 }
 
 .proj-card--visible {
@@ -122,16 +91,17 @@
 }
 
 .proj-card:hover {
-  box-shadow: 0 24px 60px rgba(244, 132, 95, 0.25);
   transform: translateY(-8px);
 }
 
-/* ─── Image ───────────────────────────────────────────── */
+/* ─── Image Wrap ──────────────────────────────────────── */
+/* ─── Image Wrap ──────────────────────────────────────── */
 .proj-card-img-wrap {
   position: relative;
   overflow: hidden;
-  height: 320px;
-  border-radius: 28px;
+  height: 280px;           /* ← chota kiya */
+  border-radius: 16px;     /* ← chota border radius */
+  margin: 12px 12px 0;    /* ← sides se gap, andar dikh sake */
 }
 
 .proj-card-img {
@@ -140,59 +110,56 @@
   object-fit: cover;
   object-position: top;
   transition: transform 0.5s ease;
+  display: block;
 }
 
 .proj-card:hover .proj-card-img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
-/* ─── Overlay ─────────────────────────────────────────── */
-.proj-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(13, 13, 20, 0.5);
+/* ─── Card Body ───────────────────────────────────────── */
+.proj-card-body {
+  padding: 24px 24px 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  border-radius: 28px;
-  transition: opacity 0.3s ease;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.proj-card:hover .proj-card-overlay {
-  opacity: 1;
+.proj-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
 }
 
-/* ─── Arrow button ────────────────────────────────────── */
-.proj-card-link {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: #e8623a;
+.proj-card-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Tags ────────────────────────────────────────────── */
+.proj-card-tags {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 24px;
-  color: #fff;
-  transform: scale(0.4) rotate(-45deg);
-  transition:
-    transform   0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    background  0.3s ease;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.proj-card:hover .proj-card-link {
-  transform: scale(1) rotate(0deg);
+.proj-card-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8623a;
 }
 
-.proj-card-link:hover {
-  background: #c0392b;
-}
-
+/* ─── Drift animation ─────────────────────────────────── */
 @keyframes drift {
   0%   { transform: translate(0px,   0px);  }
   25%  { transform: translate(4px,  -8px);  }
-  50%  { transform: translate(0px,  -14px); }
+  50%  { transform: translate(0px, -14px);  }
   75%  { transform: translate(-4px, -8px);  }
   100% { transform: translate(0px,   0px);  }
 }
@@ -200,7 +167,6 @@
 .proj-card--visible:nth-child(1) { animation: drift 6s ease-in-out infinite 0s;   }
 .proj-card--visible:nth-child(2) { animation: drift 6s ease-in-out infinite 1.2s; }
 .proj-card--visible:nth-child(3) { animation: drift 6s ease-in-out infinite 2.4s; }
-
 
 /* ─── Dots ────────────────────────────────────────────── */
 .proj-dots {
@@ -214,7 +180,7 @@
   height: 10px;
   border-radius: 50px;
   border: none;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   cursor: pointer;
   padding: 0;
   width: 10px;
@@ -224,32 +190,54 @@
     transform  0.3s ease;
 }
 
-/* Active — long line */
 .proj-dot--active {
   background: #e8623a;
-  width: 40px;                  /* ← big line */
+  width: 40px;
   border-radius: 50px;
   animation: slideExpand 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Inactive dots shrink when sibling is active */
 .proj-dots:has(.proj-dot--active) .proj-dot:not(.proj-dot--active) {
-  width: 8px;                   /* ← small */
-  background: rgba(0, 0, 0, 0.12);
+  width: 8px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 @keyframes slideExpand {
-  0%   { width: 10px;  transform: scaleX(0.4) translateX(-10px); opacity: 0.5; }
-  40%  { width: 50px;  transform: scaleX(1.2) translateX(4px);   opacity: 1;   }
-  70%  { width: 36px;  transform: scaleX(0.95);                               }
-  100% { width: 40px;  transform: scaleX(1)   translateX(0);                  }
+  0%   { width: 10px; transform: scaleX(0.4) translateX(-10px); opacity: 0.5; }
+  40%  { width: 50px; transform: scaleX(1.2) translateX(4px);   opacity: 1;   }
+  70%  { width: 36px; transform: scaleX(0.95);                               }
+  100% { width: 40px; transform: scaleX(1)   translateX(0);                  }
 }
 
-/* Hover on inactive */
 .proj-dot:not(.proj-dot--active):hover {
   background: rgba(244, 132, 95, 0.45);
   width: 14px;
   transform: scale(1.2);
+}
+
+/* ─── Top Right Link Button ───────────────────────────── */
+.proj-card-link-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(30, 28, 50, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.proj-card-link-btn:hover {
+  background: #e8623a;
+  transform: scale(1.1);
 }
 
 /* ─── Responsive ──────────────────────────────────────── */

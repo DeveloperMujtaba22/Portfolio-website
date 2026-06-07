@@ -1,211 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
-.skill-section {
-  display: flex;
-  gap: 80px;
-  padding: 100px 80px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ═══════════════════════════════════════════════════════
+   SKILLSET SECTION
+═══════════════════════════════════════════════════════ */
+.skillset-section {
+  position: relative;
+  background: #f0eeea;
+  padding: 64px 40px 72px;
+  overflow: hidden;
   font-family: 'Outfit', sans-serif;
-  background: #fff;
-  align-items: flex-start;
 }
 
-/* Left */
-.skill-left {
-  min-width: 260px;
-  max-width: 300px;
+.skillset-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.skill-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #f4845f;
-  margin: 0 0 12px;
+.skillset-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #000000;
+  opacity: 0.5;
+  animation: starTwinkle ease-in-out infinite;
 }
 
-.skill-title {
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.4); }
+}
+
+.skillset-heading {
+  position: relative;
+  text-align: center;
+  font-size: 3.3rem;
+  margin-left: -50px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+  font-family: 'Outfit', sans-serif;
+}
+.skillset-subheading {
+  position: relative;
+  text-align: center;
+  font-size: 1.17rem;
+  font-weight: 500;
+  color: #555;
+  margin-top: -20px;
+  margin-bottom: 50px;  
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ─── pct number on hover ─── */
+.skillset-pill {
+  cursor: pointer;
+}
+
+.skillset-pill__pct {
+  font-size: 18px;
   font-weight: 800;
-  line-height: 1.1;
-  color: #111;
-  margin: 0 0 20px;
+  color: #ffffff;
+  min-width: 22px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.skill-title em {
-  font-style: italic;
-  font-weight: 800;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2px #11111188;
-}
+.skillset-accent { color: #e8623a; }
 
-.skill-desc {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* Right */
-.skill-right {
-  flex: 1;
+.skillset-grid {
+  position: relative;
   display: flex;
-  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.skill-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-/* Group */
-.skill-group-label {
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #9c9797;
-  margin: 0 0 16px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-}
-
-/* Item */
-.skill-item {
-  margin-bottom: 20px;
-}
-
-.skill-item-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.skill-name {
+.skillset-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(38, 40, 44, 0.137),
+    rgba(18, 20, 22, 0.045)
+  );
+  border: 1.5px solid rgba(3, 2, 2, 0.502);
+  border-radius: 50px;
+  padding: 10px 20px;
   font-size: 22px;
   font-weight: 600;
-  color: #111;
+  color: #1b1b1b;
+  white-space: nowrap;
+  cursor: default;
+  backdrop-filter: blur(6px);
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.2s;
+  animation: pillFadeIn 0.4s ease both;
 }
 
-.skill-pct {
-  font-size: 17px;
-  font-weight: 700;
-  color: #f4845f;
+.skillset-pill:hover {
+  border-color: #000000;
+  background: #df481ac1;
+  color: #f0f9ffe9;
+  transform: translateY(-2px);
 }
 
-/* Bar */
-.skill-track {
-  width: 100%;
-  height: 2px;
-  background: #eee;
-  border-radius: 2px;
-  overflow: hidden;
+.skillset-pill__icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-.skill-fill {
-  height: 100%;
-  width: var(--pct);
-  background: #f4845f;
-  border-radius: 2px;
-  animation: growBar 1.2s ease forwards;
-  transform-origin: left;
+@keyframes pillFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes growBar {
-  from { width: 0; }
-  to   { width: var(--pct); }
-}
 
-/* Responsive */
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .skill-section {
-    flex-direction: column;
-    padding: 60px 24px;
-    gap: 40px;
-  }
-  .skill-left {
-    max-width: 100%;
-  }
-  .skill-right {
-    flex-direction: column;
-    gap: 32px;
-  }
-}
 
-/* ── Mobile ── */
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — single block, no duplicates
+═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .skill-section {
-    padding: 48px 20px;
-    gap: 32px;
-  }
-  .skill-eyebrow{
-    font-size: 17px;
-  }
+  /* Skillset */
+  .skillset-section {
+    padding: 36px 16px 32px;
 
-  .skill-title {
+  }
+  .skillset-heading {
     font-size: 2rem;
+    margin-bottom: 18px;
+  }
+  .skillset-grid {
+    gap: 8px;
+  }
+  .skillset-pill {
+    font-size: 12px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  .skillset-pill__icon {
+    width: 16px;
+    height: 16px;
   }
 
-  .skill-desc {
-    font-size: 15px;
-  }
+  /* Projects */
+  .projects-section2 {
+    padding: -48px 16px 32px;
 
-  .skill-right {
-    flex-direction: row;        /* ✅ 2 columns side by side */
-    gap: 24px;
+  }
+  .projects-content {
+    gap: .35rem;
+    width: 100%;
+    margin-top: -90px;
+  }
+  .projects-title-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     width: 100%;
   }
-
-  .skill-col {
-    flex: 1;
-    gap: 24px;
-    min-width: 0;               /* ✅ overflow rokne ke liye */
+  .projects-title {
+    font-size: 36px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.2;
   }
-
-  .skill-group-label {
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-  }
-
-  .skill-name {
-    font-size: 14px;
-  }
-
-  .skill-pct {
-    font-size: 13px;
-  }
-
-  .skill-item {
-    margin-bottom: 14px;
-  }
-
-  .skill-item-header {
-    margin-bottom: 6px;
-  }
-}
-
-/* ── Small phones (SE, 375px) ── */
-@media (max-width: 375px) {
-  .skill-section {
-    padding: 40px 16px;
-  }
-
-  .skill-right {
-    flex-direction: column;     /* ✅ bohot chote screen pe stack */
-    gap: 20px;
-  }
-
-  .skill-title {
-    font-size: 3.3rem;
-  }
-
-  .skill-name {
-    font-size: 20px;
-  }
-
-  .skill-pct {
+  .projects-desc {
     font-size: 17px;
+    line-height: 1.7;
+    width: 200%;
+    max-width: 130%;
+    margin-left: -15%;
+  }
+  .projects-arrow {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+  .projects-dots {
+    margin-top: 1.25rem;
+    gap: 6px;
+  }
+  .projects-dot {
+    width: 24px;
+    height: 7px;
+  }
+  .projects-dot--active {
+    width: 32px;
   }
 }

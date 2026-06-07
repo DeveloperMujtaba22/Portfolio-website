@@ -10,7 +10,7 @@ const Hero = () => {
         <h1>
           Hi, I am <span className='highlight'>Mujtaba Rasheed</span>
         </h1>
-        <h2>Full Stack Developer</h2>
+        <h2>Frontend Web Developer</h2>
       </div>
 
       {/* Center image with orange circle */}
@@ -26,15 +26,10 @@ const Hero = () => {
       <div className='hero-quote-card'>
         <span className='quote-icon'>“
 </span>
-        <p>A rare talent who understands both the user experience and the complex logic behind it.</p>
+        <p>I build responsive, modern, and user-friendly web applications using HTML, CSS, JavaScript, and React.js.</p>
       </div>
 
-      {/* Right experience card */}
-      <div className='hero-exp-card'>
-        <div className='stars'>★ ★ ★ ★ ★</div>
-        <div className='exp-number'>1 Year</div>
-        <div className='exp-label'>Experience</div>
-      </div>
+     
 
       {/* Hello badge */}
      {/* Hello badge */}

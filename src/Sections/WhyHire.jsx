@@ -2,10 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './WhyHire.css';
 import mujtaba2 from '../../public/assets/mujtaba2.png';
 
-const stats = [
-  { number: '20+', label: 'PROJECTS COMPLETED' },
-  { number: '15+', label: 'HAPPY CLIENTS' },
-];
+
 
 const WhyHire = () => {
   const sectionRef = useRef(null);
@@ -61,20 +58,11 @@ const WhyHire = () => {
         </h2>
 
         <p className="wh-desc">
-          I bridge the gap between complex backend logic and
-          pixel-perfect frontend experiences. My goal is to turn your
-          vision into a <strong>high-performing reality.</strong>
+         I create responsive, modern, and user-friendly websites with clean code and attractive UI. I am passionate about web development, always learning new technologies, and dedicated to delivering quality work.
+
         </p>
 
-        {/* Stats */}
-        <div className="wh-stats">
-          {stats.map((s, i) => (
-            <div className="wh-stat" key={i}>
-              <span className="wh-stat-number">{counts[i]}+</span>
-              <span className="wh-stat-label">{s.label}</span>
-            </div>
-          ))}
-        </div>
+      
 
         {/* CTA */}
         <a href="#contact" className="wh-btn">

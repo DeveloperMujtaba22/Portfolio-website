@@ -22,9 +22,8 @@ const NavBar = () => {
     { label: 'Home',    path: '/' },
     { label: 'About',   path: '/about' },
     { label: 'Service', path: '/service' },
-    { label: 'Resume',  path: '/resume' },
+    { label: 'Skill',  path: '/skill' },
     { label: 'Project', path: '/project' },
-    { label: 'Blogs',   path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ]
 
