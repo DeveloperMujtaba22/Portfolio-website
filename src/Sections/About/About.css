@@ -246,6 +246,22 @@
   color: white;
 }
 
+/* ── Scroll animations ── */
+.aos-fade-left,
+.aos-fade-right {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.aos-fade-left  { transform: translateX(-50px); }
+.aos-fade-right { transform: translateX(50px);  }
+
+.aos-fade-left.aos-visible,
+.aos-fade-right.aos-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* ─────────────────────────────────────────
    RESPONSIVE — MOBILE
 ───────────────────────────────────────── */

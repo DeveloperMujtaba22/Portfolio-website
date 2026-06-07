@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const ORANGE = "#e8623a";
 const ORANGE_DARK = "#e85c1f";
@@ -19,17 +19,36 @@ const CARD_ACCENT = {
 };
 
 const SOCIAL_CONFIG = [
-  { key: "gh",  icon: "ti-brand-github",    label: "GitHub",    url: "https://github.com/DeveloperMujtaba22"        },
-  { key: "li",  icon: "ti-brand-linkedin",  label: "LinkedIn",  url: "https://www.linkedin.com/in/mujtaba-b50000363/https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFERdBaQqyA_gAAAZ6jZCmYfmwjtmijMoJKK7s-E0zam9a_06xmRZ40D6ND0-mmktD6Kl0doK8AlErXFid_zkcuoLS4rQaZHJiyCC1wqYMHeRfnd3T9jA9fDbvuLxu3OyJbmYE=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmujtaba-b50000363%2F" },
-  { key: "ig",  icon: "ti-brand-instagram", label: "Instagram", url: "https://www.instagram.com/mujtabarasheed/?next=" },
+  { key: "gh", icon: "ti-brand-github",    label: "GitHub",    url: "https://github.com/DeveloperMujtaba22" },
+  { key: "li", icon: "ti-brand-linkedin",  label: "LinkedIn",  url: "https://www.linkedin.com/in/mujtaba-b50000363/" },
+  { key: "ig", icon: "ti-brand-instagram", label: "Instagram", url: "https://www.instagram.com/mujtabarasheed/?next=" },
 ];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [hoveredCard, setHoveredCard]     = useState(null);
+  const [hoveredCard,   setHoveredCard]   = useState(null);
   const [hoveredSocial, setHoveredSocial] = useState(null);
-  const [hoveredBtn, setHoveredBtn]       = useState(false);
-  const [focusedField, setFocusedField]   = useState(null);
+  const [hoveredBtn,    setHoveredBtn]    = useState(false);
+  const [focusedField,  setFocusedField]  = useState(null);
+
+  const leftRef  = useRef(null);
+  const rightRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    if (leftRef.current)  observer.observe(leftRef.current);
+    if (rightRef.current) observer.observe(rightRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const handleSubmit = () => console.log("Form submitted:", form);
@@ -114,6 +133,21 @@ export default function Contact() {
           animation: floatBadge 3s ease-in-out infinite;
         }
 
+        /* ── Scroll animations ── */
+        .aos-fade-left,
+        .aos-fade-right {
+          opacity: 0;
+          transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .aos-fade-left  { transform: translateX(-50px); }
+        .aos-fade-right { transform: translateX(50px);  }
+        .aos-fade-left.aos-visible,
+        .aos-fade-right.aos-visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .aos-fade-right { transition-delay: 0.15s; }
+
         /* ── Tablet ── */
         @media (max-width: 900px) {
           .contact-wrapper {
@@ -121,9 +155,7 @@ export default function Contact() {
             padding: 100px 40px 100px;
             gap: 48px;
           }
-          .contact-headline {
-            font-size: 100px;
-          }
+          .contact-headline { font-size: 100px; }
         }
 
         /* ── Mobile ── */
@@ -136,39 +168,25 @@ export default function Contact() {
             font-size: 72px;
             letter-spacing: 3px;
           }
-          .form-row {
-            grid-template-columns: 1fr;
-          }
-          .form-card {
-            padding: 24px 20px 40px !important;
-          }
-          .response-badge {
-            bottom: -18px;
-            right: 16px;
-            padding: 8px 14px;
-          }
+          .form-row { grid-template-columns: 1fr; }
+          .form-card { padding: 24px 20px 40px !important; }
+          .response-badge { bottom: -18px; right: 16px; padding: 8px 14px; }
         }
 
-        /* ── Very small ── */
         @media (max-width: 380px) {
-          .contact-headline {
-            font-size: 48px;
-          }
+          .contact-headline { font-size: 48px; }
         }
       `}</style>
 
       <div className="contact-wrapper">
 
         {/* LEFT */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div ref={leftRef} className="aos-fade-left" style={{ display: "flex", flexDirection: "column" }}>
 
-       
-
-          {/* Headline */}
           <h1 className="contact-headline">
             LET'S
             <span style={{ color: ORANGE, display: "block" }}>
-             Contact
+              Contact
               <span style={{
                 display: "inline-block", width: 20, height: 20,
                 background: DARK, marginLeft: 6,
@@ -178,7 +196,7 @@ export default function Contact() {
           </h1>
 
           <p style={{ marginTop: 10, fontSize: 15, color: "#666", maxWidth: 380, lineHeight: 1.6, marginBottom: 17 }}>
-            
+            Got a project in mind? Let's build something great together.
           </p>
 
           {/* Contact Cards */}
@@ -228,38 +246,37 @@ export default function Contact() {
               Socials //
             </span>
             {SOCIAL_CONFIG.map(({ key, icon, label, url }) => {
-  const hov = hoveredSocial === key;
-  return (
-    <a
-      key={key}
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      onMouseEnter={() => setHoveredSocial(key)}
-      onMouseLeave={() => setHoveredSocial(null)}
-      style={{
-        width: 40, height: 40, borderRadius: "50%",
-        background: hov ? ORANGE : DARK,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        cursor: "pointer",
-        textDecoration: "none",
-        transform: hov ? "translateY(-3px) scale(1.12)" : "translateY(0) scale(1)",
-        boxShadow: hov ? `0 6px 16px ${ORANGE_GLOW}` : "none",
-        transition: "background 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s",
-      }}
-    >
-      <i className={`ti ${icon}`} style={{ fontSize: 18, color: "#fff" }} aria-hidden="true" />
-    </a>
-  );
-})}
+              const hov = hoveredSocial === key;
+              return (
+                <a
+                  key={key}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  onMouseEnter={() => setHoveredSocial(key)}
+                  onMouseLeave={() => setHoveredSocial(null)}
+                  style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: hov ? ORANGE : DARK,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    cursor: "pointer", textDecoration: "none",
+                    transform: hov ? "translateY(-3px) scale(1.12)" : "translateY(0) scale(1)",
+                    boxShadow: hov ? `0 6px 16px ${ORANGE_GLOW}` : "none",
+                    transition: "background 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s",
+                  }}
+                >
+                  <i className={`ti ${icon}`} style={{ fontSize: 18, color: "#fff" }} aria-hidden="true" />
+                </a>
+              );
+            })}
           </div>
-
         </div>
 
         {/* RIGHT — Form Card */}
         <div
-          className="form-card"
+          ref={rightRef}
+          className="form-card aos-fade-right"
           style={{
             background: CARD_BG, borderRadius: 24, padding: 30,
             border: `1px solid ${BORDER}`,
@@ -269,7 +286,6 @@ export default function Contact() {
             marginBottom: 24,
           }}
         >
-          {/* Name + Email row */}
           <div className="form-row">
             {[
               { name: "name",  label: "Full Name",     placeholder: "Mujtaba Rasheed"   },
@@ -292,11 +308,8 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Subject */}
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: MUTED }}>
-              Subject
-            </label>
+            <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: MUTED }}>Subject</label>
             <input
               style={inputStyle("subject")}
               name="subject"
@@ -308,11 +321,8 @@ export default function Contact() {
             />
           </div>
 
-          {/* Message */}
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: MUTED }}>
-              Your Message
-            </label>
+            <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: MUTED }}>Your Message</label>
             <textarea
               style={{ ...inputStyle("message"), height: 120, lineHeight: 1.6, resize: "none" }}
               name="message"
@@ -324,7 +334,6 @@ export default function Contact() {
             />
           </div>
 
-          {/* Submit */}
           <button
             onClick={handleSubmit}
             onMouseEnter={() => setHoveredBtn(true)}
@@ -344,10 +353,8 @@ export default function Contact() {
             }}
           >
             <i className="ti ti-send" style={{ fontSize: 17 }} aria-hidden="true" />
-            SEND 
+            SEND
           </button>
-
-         
         </div>
       </div>
     </>

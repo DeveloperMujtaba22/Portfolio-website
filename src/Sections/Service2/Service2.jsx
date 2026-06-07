@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Service2.css';
 
 const services = [
@@ -9,6 +9,26 @@ const services = [
 
 const Service = () => {
   const [active, setActive] = useState(0);
+  const headerRef = useRef(null);
+  const cardsRef  = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (cardsRef.current)  observer.observe(cardsRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="service-wrapper">
@@ -17,7 +37,7 @@ const Service = () => {
         <div className="service-blob service-blob--tr" />
         <div className="service-blob service-blob--br" />
 
-        <div className="service-header">
+        <div className="service-header aos-fade-up" ref={headerRef}>
           <h2 className="service-title">
             My <span className="service-highlight">Services</span>
           </h2>
@@ -26,8 +46,7 @@ const Service = () => {
           </p>
         </div>
 
-        {/* ✅ translateX se active card show hoga */}
-        <div className="service-cards">
+        <div className="service-cards aos-fade-up" ref={cardsRef}>
           {services.map((s, i) => (
             <div
               className="service-card"
@@ -45,7 +64,6 @@ const Service = () => {
           ))}
         </div>
 
-        {/* Dots */}
         <div className="service-dots">
           {services.map((_, i) => (
             <button

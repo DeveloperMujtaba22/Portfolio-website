@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Skill.css';
 
 const SKILLS = [
@@ -28,50 +28,68 @@ const STARS = Array.from({ length: 60 }, (_, i) => ({
 
 const Skill = () => {
   const [hovered, setHovered] = useState(null);
+  const headingRef = useRef(null);
+  const gridRef    = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    if (headingRef.current) observer.observe(headingRef.current);
+    if (gridRef.current)    observer.observe(gridRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <>
-      <section className="skillset-section" id="skill">
-        <div className="skillset-stars" aria-hidden="true">
-          {STARS.map(s => (
-            <span key={s.id} className="skillset-star" style={{
-              left: `${s.x}%`, top: `${s.y}%`,
-              width: s.size, height: s.size,
-              animationDelay: `${s.delay}s`, animationDuration: `${s.dur}s`,
-            }} />
-          ))}
-        </div>
+    <section className="skillset-section" id="skill">
+      <div className="skillset-stars" aria-hidden="true">
+        {STARS.map(s => (
+          <span key={s.id} className="skillset-star" style={{
+            left: `${s.x}%`, top: `${s.y}%`,
+            width: s.size, height: s.size,
+            animationDelay: `${s.delay}s`, animationDuration: `${s.dur}s`,
+          }} />
+        ))}
+      </div>
 
+      <div ref={headingRef} className="aos-fade-up">
         <h2 className="skillset-heading">Skills</h2>
-        <p className="skillset-subheading">
-         Hover over a skill for currency proficiency
-        </p>
+        <p className="skillset-subheading">Hover over a skill for currency proficiency</p>
+      </div>
 
-        <div className="skillset-grid">
-          {SKILLS.map((skill, i) => (
-            <span
-              key={i}
-              className={`skillset-pill${hovered === i ? ' skillset-pill--hovered' : ''}`}
-              style={{ animationDelay: `${i * 0.05}s` }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {hovered === i ? (
-                <span className="skillset-pill__pct">{skill.pct}%</span>
-              ) : (
-                <img
-                  src={skill.icon}
-                  alt={skill.name}
-                  className="skillset-pill__icon"
-                  onError={e => { e.target.style.display = 'none'; }}
-                />
-              )}
-              {skill.name}
-            </span>
-          ))}
-        </div>
-      </section>
-    </>
+      <div className="skillset-grid aos-fade-up" ref={gridRef}>
+        {SKILLS.map((skill, i) => (
+          <span
+            key={i}
+            className={`skillset-pill${hovered === i ? ' skillset-pill--hovered' : ''}`}
+            style={{ animationDelay: `${i * 0.05}s` }}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {hovered === i ? (
+              <span className="skillset-pill__pct">{skill.pct}%</span>
+            ) : (
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                className="skillset-pill__icon"
+                onError={e => { e.target.style.display = 'none'; }}
+              />
+            )}
+            {skill.name}
+          </span>
+        ))}
+      </div>
+    </section>
   );
 };
 
