@@ -65,10 +65,10 @@ const Project = () => {
 
       <div className="proj-header">
         <div className="proj-header-left">
-          <p className="proj-eyebrow">PORTFOLIO</p>
+          <p className="proj-eyebrow">Project</p>
           <h2 className="proj-title">
             Lets have a look at<br />
-            my <span className="proj-highlight">Portfolio</span>
+            my <span className="proj-highlight">Projects</span>
           </h2>
         </div>
         <a href="#" className="proj-see-all">See All</a>
@@ -86,14 +86,15 @@ const Project = () => {
             {/* Image */}
             <div className="proj-card-img-wrap">
               <img src={p.image} alt={p.title} className="proj-card-img" />
-              <a
-                href={p.link}
-                className="proj-card-link-btn"
-                aria-label="View project"
-                onClick={e => e.stopPropagation()}
-              >
-                ↗
-              </a>
+             <a class="proj-card-link-btn" href="#" title="View project">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+    stroke="currentColor" stroke-width="1.7"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 4H5a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3"/>
+    <path d="M12 3h5v5"/>
+    <line x1="17" y1="3" x2="9" y2="11"/>
+  </svg>
+</a>
             </div>
             {/* Body */}
             <div className="proj-card-body">

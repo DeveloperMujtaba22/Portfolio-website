@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "../Footer/Footer";
 
 const ORANGE = "#e8623a";
 const ORANGE_DARK = "#e85c1f";
@@ -371,7 +370,6 @@ export default function Contact() {
 
         </div>
       </div>
-      <Footer/>
     </>
   );
 }
