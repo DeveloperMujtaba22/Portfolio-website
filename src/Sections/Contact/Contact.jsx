@@ -196,7 +196,7 @@ export default function Contact() {
           </h1>
 
           <p style={{ marginTop: 10, fontSize: 15, color: "#666", maxWidth: 380, lineHeight: 1.6, marginBottom: 17 }}>
-            Got a project in mind? Let's build something great together.
+            
           </p>
 
           {/* Contact Cards */}
