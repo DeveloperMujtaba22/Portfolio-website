@@ -46,7 +46,7 @@
 .skillset-subheading {
   position: relative;
   text-align: center;
-  font-size: 1.17rem;
+  font-size: 1.27rem;
   font-weight: 500;
   color: #555;
   margin-top: -20px;
@@ -135,14 +135,15 @@
 
   }
   .skillset-heading {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-left: -30px;
     margin-bottom: 18px;
   }
   .skillset-grid {
     gap: 8px;
   }
   .skillset-pill {
-    font-size: 12px;
+    font-size: 15px;
     padding: 6px 12px;
     gap: 6px;
   }

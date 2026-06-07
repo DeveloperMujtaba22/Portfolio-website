@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Contact1.css';
 
 const ticker = [
-  'WEB DESIGN', 'WEB DEVELOPMENT', 'WIREFRAME',
-  'BACKEND DEVELOPMENT', 'UI/UX DESIGN', 'REACT.JS',
-  'NODE.JS', 'FULL STACK', 'DATABASE DESIGN',
+  'React js', 'WEB DEVELOPMENT', 'Next js',
+  'JavaScript', 'Tailwind CSS', 'MongoDB',
+  'NODE.JS', 'TYPESCRIPT', 'HTML5',
 ];
 
 const Contact = () => {

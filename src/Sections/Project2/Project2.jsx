@@ -7,7 +7,7 @@ const projects = [
     title: 'Podcast Services Marketplace Platform',
     desc: 'Podle – A platform that allows buyers and sellers to purchase podcasting services such as studios, audio equipment include chats, orders, transactions and much more.',
     image: '/assets/soulchamp.png',
-    tags: ['#sanity', '#next', '#tailwind'],
+    tags: ['#react', '#next', '#tailwind'],
     link: '#',
   },
   {
@@ -15,7 +15,7 @@ const projects = [
     title: 'Ecommerce Furniture Store',
     desc: 'Chairlaxed – A complete ecommerce website with advanced features like discounts, payment gateway, content management systems & Email Marketing.',
     image: '/assets/nexaphone.png',
-    tags: ['#react', '#ecommerce', '#sanity', '#typescript'],
+    tags: ['#react', '#ecommerce', '#tailwind'],
     link: '#',
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     title: 'Corporate Leadership Developement',
     desc: 'CLD – Corporate Leadership Developement is a website that markets flagship events, corporate trainings and social media posts of the company.',
     image: '/assets/agency.png',
-    tags: ['#nextjs', '#sanity', '#tailwind css'],
+    tags: ['#nextjs', '#react', '#tailwind css'],
     link: '#',
   },
 ];
@@ -71,7 +71,7 @@ const Project = () => {
             my <span className="proj-highlight">Projects</span>
           </h2>
         </div>
-        <a href="#" className="proj-see-all">See All</a>
+       
       </div>
 
       <div className="proj-grid">
