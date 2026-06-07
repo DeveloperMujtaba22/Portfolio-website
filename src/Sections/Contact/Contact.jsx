@@ -162,23 +162,13 @@ export default function Contact() {
         {/* LEFT */}
         <div style={{ display: "flex", flexDirection: "column" }}>
 
-          {/* Badge */}
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            fontSize: 12, fontWeight: 600, letterSpacing: "1.5px",
-            color: ORANGE, textTransform: "uppercase",
-            background: "rgba(255,107,43,0.1)", border: "1px solid rgba(255,107,43,0.2)",
-            borderRadius: 50, padding: "6px 14px", marginBottom: 24, width: "fit-content",
-          }}>
-            <span className="bdot" style={{ width: 8, height: 8, background: ORANGE, borderRadius: "50%" }} />
-            Available for projects
-          </div>
+       
 
           {/* Headline */}
           <h1 className="contact-headline">
             LET'S
             <span style={{ color: ORANGE, display: "block" }}>
-              CONNECT
+             Contact.
               <span style={{
                 display: "inline-block", width: 20, height: 20,
                 background: DARK, marginLeft: 6,
@@ -353,21 +343,7 @@ export default function Contact() {
             SEND DISPATCH
           </button>
 
-          {/* Response badge */}
-          <div className="response-badge">
-            <div style={{
-              fontSize: 9, fontWeight: 600, letterSpacing: "1.5px",
-              textTransform: "uppercase", color: MUTED,
-              display: "flex", alignItems: "center", gap: 6, marginBottom: 2,
-            }}>
-              <span className="gdot" style={{ width: 7, height: 7, background: "#22c55e", borderRadius: "50%", display: "inline-block" }} />
-              Response Time
-            </div>
-            <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.5px", color: "#fff" }}>
-              &lt; 24 Hours
-            </div>
-          </div>
-
+         
         </div>
       </div>
     </>

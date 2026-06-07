@@ -289,7 +289,8 @@
     min-height: 99vh;
   }
   .hero-hello-badge {
-    margin-top: 12px;  /* ✅ same value */
+    margin-top: 19px;  /* ✅ same value */
+    margin-left: -35px
   }
 
   .hero-big-text {
@@ -300,7 +301,7 @@
     white-space: normal;
   }
 .hero-big-text h2 {
-  font-size: clamp(2rem, 5.5vw, 2rem);
+  font-size: clamp(1.7rem, 5.5vw, 2rem);
   line-height: 1.2;
 }
 
@@ -316,7 +317,7 @@
   display: block;
   height: 52vh;
   max-height: none;
-  min-height: 530px;
+  min-height: 550px;
   width: 100vw;
   max-width: none;
   object-fit: cover;

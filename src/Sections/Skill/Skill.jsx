@@ -31,7 +31,7 @@ const Skill = () => {
 
   return (
     <>
-      <section className="skillset-section">
+      <section className="skillset-section" id="skill">
         <div className="skillset-stars" aria-hidden="true">
           {STARS.map(s => (
             <span key={s.id} className="skillset-star" style={{
