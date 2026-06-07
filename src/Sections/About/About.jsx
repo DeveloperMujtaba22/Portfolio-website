@@ -6,8 +6,8 @@ const About = () => {
     <>
       
 
-      <div className="about-page">
-        <div className="about-hero">
+      <div className="about-page" >
+        <div className="about-hero" id="about">
 
           {/* Left: Photo */}
           <div className="about-photo-wrap">

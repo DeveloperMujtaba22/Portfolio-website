@@ -38,22 +38,12 @@ const Hero = () => {
   <span className='badge-sparkle'>✦</span>
 </div>
 
-      {/* Bottom buttons */}
-     <div className='hero-buttons'>
-  <div className='btn-pill-wrap'>
-    <a href='#project' className='btn-portfolio'>Portfolio ↗</a>
-    <a href='#contact' className='btn-hire'>Hire Me</a>
-  </div>
-</div>
+      
 
-      {/* Feedback button */}
-      {/* Feedback button */}
-<div className='hero-feedback'>
-  <a href='#feedback' className='btn-feedback'>
-    <span className='feedback-star'>★</span> Leave Feedback
-  </a>
-</div>
 
+    
+
+    
     </section>
   )
 }

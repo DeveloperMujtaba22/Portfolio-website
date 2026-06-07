@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeId, setActiveId] = useState('hero')
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+
+      // Update active link based on scroll position
+      const ids = ['hero', 'about', 'service', 'skill', 'project', 'contact']
+      let current = 'hero'
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          current = id
+        }
+      }
+      setActiveId(current)
+    }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -18,13 +31,19 @@ const NavBar = () => {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const scrollTo = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setMenuOpen(false)
+  }
+
   const navLinks = [
-    { label: 'Home',    path: '/' },
-    { label: 'About',   path: '/about' },
-    { label: 'Service', path: '/service' },
-    { label: 'Skill',  path: '/skill' },
-    { label: 'Project', path: '/project' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'Home',    id: 'hero'    },
+    { label: 'About',   id: 'about'   },
+    { label: 'Service', id: 'service' },
+    { label: 'Skill',   id: 'skill'   },
+    { label: 'Project', id: 'project' },
+    { label: 'Contact', id: 'contact' },
   ]
 
   return (
@@ -32,7 +51,6 @@ const NavBar = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
-        /* ── Wrapper ── */
         .navbar-wrapper {
           display: flex;
           justify-content: center;
@@ -44,7 +62,6 @@ const NavBar = () => {
         }
         .navbar-wrapper.scrolled { padding: 10px 24px; }
 
-        /* ── Container ── */
         .navbar-container {
           display: flex;
           align-items: center;
@@ -53,12 +70,11 @@ const NavBar = () => {
           padding: 3px 8px 6px 9px;
           gap: 20px;
           max-width: 1090px;
-          width: 67%;
+          width: 60%;
           box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
           font-family: 'Outfit', sans-serif;
         }
 
-        /* ── Desktop nav links ── */
         .nav-link {
           position: relative;
           padding: 10px 27px;
@@ -73,6 +89,7 @@ const NavBar = () => {
           background: none;
           text-decoration: none;
           letter-spacing: 0.03em;
+          font-family: 'Outfit', sans-serif;
         }
         .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
         .nav-link.active {
@@ -82,7 +99,6 @@ const NavBar = () => {
           box-shadow: 0 4px 16px rgba(244,132,95,0.35);
         }
 
-        /* ── Brand ── */
         .brand-center {
           display: flex; align-items: center; gap: 10px;
           padding: 6px 14px 6px 6px; margin: 0 4px;
@@ -105,7 +121,6 @@ const NavBar = () => {
         .nav-left  { display: flex; align-items: center; gap: 20px; }
         .nav-right { display: flex; align-items: center; gap: 10px; }
 
-        /* ── Hamburger ── */
         .hamburger {
           display: none;
           flex-direction: column;
@@ -126,14 +141,11 @@ const NavBar = () => {
           transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
           transform-origin: center;
         }
-        /* Hamburger → X */
         .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
         .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-        /* ════════════════════════════
-           MOBILE MENU OVERLAY
-           ════════════════════════════ */
+        /* ── Mobile Overlay ── */
         .mobile-menu-overlay {
           position: fixed;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -146,7 +158,6 @@ const NavBar = () => {
         }
         .mobile-menu-overlay.open { pointer-events: all; }
 
-        /* Backdrop */
         .mobile-menu-backdrop {
           position: absolute; inset: 0;
           background: rgba(0,0,0,0);
@@ -160,7 +171,6 @@ const NavBar = () => {
           -webkit-backdrop-filter: blur(6px);
         }
 
-        /* Panel spring-in */
         .mobile-menu-panel {
           position: relative; z-index: 1;
           background: #171717;
@@ -178,22 +188,25 @@ const NavBar = () => {
           opacity: 1;
         }
 
-        /* Menu links */
         .mobile-menu-link {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          width: 100%;
           padding: 15px 20px;
           border-radius: 16px;
-          text-decoration: none;
           font-size: 16px;
           font-weight: 500;
           font-family: 'Outfit', sans-serif;
           color: #fff;
           background: #232323;
           margin-bottom: 6px;
+          border: none;
+          cursor: pointer;
+          text-align: left;
           transform: translateX(-22px);
           opacity: 0;
+          box-sizing: border-box;
           transition:
             background 0.2s,
             transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
@@ -206,14 +219,12 @@ const NavBar = () => {
           opacity: 1;
         }
 
-        /* Stagger */
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(1) { transition-delay: 0.04s; }
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(2) { transition-delay: 0.08s; }
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(3) { transition-delay: 0.12s; }
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(4) { transition-delay: 0.16s; }
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(5) { transition-delay: 0.20s; }
         .mobile-menu-overlay.open .mobile-menu-link:nth-child(6) { transition-delay: 0.24s; }
-        .mobile-menu-overlay.open .mobile-menu-link:nth-child(7) { transition-delay: 0.28s; }
 
         .mobile-menu-link:hover { background: #2c2c2c; }
         .mobile-menu-link.active { background: #e8623a; }
@@ -225,7 +236,6 @@ const NavBar = () => {
         .mobile-menu-link:hover .mobile-menu-arr { transform: translate(3px,-3px); opacity: 1; }
         .mobile-menu-link.active .mobile-menu-arr { opacity: 1; }
 
-        /* ── Responsive ── */
         @media (max-width: 768px) {
           .navbar-wrapper { padding: 12px 12px; }
           .navbar-container {
@@ -241,40 +251,37 @@ const NavBar = () => {
         }
       `}</style>
 
-      {/* ════ MOBILE MENU OVERLAY ════ */}
+      {/* ── Mobile Menu Overlay ── */}
       <div className={`mobile-menu-overlay${menuOpen ? ' open' : ''}`}>
-        {/* Backdrop click to close */}
         <div className="mobile-menu-backdrop" onClick={() => setMenuOpen(false)} />
-
-        {/* Panel */}
         <div className="mobile-menu-panel">
           {navLinks.map((link, i) => (
-            <Link
+            <button
               key={link.label}
-              to={link.path}
-              className={`mobile-menu-link${location.pathname === link.path ? ' active' : ''}`}
-              style={{
-                transitionDelay: menuOpen ? `${0.04 + i * 0.04}s` : '0s',
-              }}
-              onClick={() => setMenuOpen(false)}
+              className={`mobile-menu-link${activeId === link.id ? ' active' : ''}`}
+              style={{ transitionDelay: menuOpen ? `${0.04 + i * 0.04}s` : '0s' }}
+              onClick={() => scrollTo(link.id)}
             >
               <span>{link.label}</span>
               <span className="mobile-menu-arr">↗</span>
-            </Link>
+            </button>
           ))}
         </div>
       </div>
 
-      {/* ════ NAVBAR ════ */}
+      {/* ── NavBar ── */}
       <div className={`navbar-wrapper${scrolled ? ' scrolled' : ''}`}>
         <nav className="navbar-container">
 
           <div className="nav-left">
             {navLinks.slice(0, 3).map(link => (
-              <Link key={link.label} to={link.path}
-                className={`nav-link${location.pathname === link.path ? ' active' : ''}`}>
+              <button
+                key={link.label}
+                className={`nav-link${activeId === link.id ? ' active' : ''}`}
+                onClick={() => scrollTo(link.id)}
+              >
                 {link.label}
-              </Link>
+              </button>
             ))}
           </div>
 
@@ -285,14 +292,16 @@ const NavBar = () => {
 
           <div className="nav-right">
             {navLinks.slice(3).map(link => (
-              <Link key={link.label} to={link.path}
-                className={`nav-link${location.pathname === link.path ? ' active' : ''}`}>
+              <button
+                key={link.label}
+                className={`nav-link${activeId === link.id ? ' active' : ''}`}
+                onClick={() => scrollTo(link.id)}
+              >
                 {link.label}
-              </Link>
+              </button>
             ))}
           </div>
 
-          {/* Hamburger — morphs to X when open */}
           <button
             className={`hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => setMenuOpen(m => !m)}
