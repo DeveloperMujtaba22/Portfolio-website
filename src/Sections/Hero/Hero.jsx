@@ -26,7 +26,7 @@ const Hero = () => {
       <div className='hero-quote-card'>
         <span className='quote-icon'>“
 </span>
-        <p>I build responsive, modern, and user-friendly web applications using HTML, CSS, JavaScript, and React.js.</p>
+        <p>I build responsive, modern, and user-friendly web applications using React, Next.js, and Tailwind CSS.</p>
       </div>
 
      

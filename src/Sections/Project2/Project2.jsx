@@ -4,24 +4,24 @@ import './Project2.css';
 const projects = [
   {
     id: 1,
-    title: 'Podcast Services Marketplace Platform',
-    desc: 'Podle – A platform that allows buyers and sellers to purchase podcasting services such as studios, audio equipment include chats, orders, transactions and much more.',
+    title: 'SoulChamp — Youth Fitness & Tech Program',
+    desc: 'SoulChamp is an immersive program for San Francisco youth combining fitness, technology, and life coaching to unlock potential and build community.',
     image: '/assets/soulchamp.png',
     tags: ['#react', '#next', '#tailwind'],
-    link: '#',
+    link: 'https://soulchamp.vercel.app/',
   },
   {
     id: 2,
-    title: 'Ecommerce Furniture Store',
-    desc: 'Chairlaxed – A complete ecommerce website with advanced features like discounts, payment gateway, content management systems & Email Marketing.',
+    title: 'Ecommerce NexaPhone Store',
+    desc: 'NexaPhone — Shop the latest smartphones & accessories online. Best prices, fast delivery, and easy returns. Find your perfect phone today.',
     image: '/assets/nexaphone.png',
     tags: ['#react', '#ecommerce', '#tailwind'],
-    link: '#',
+    link: 'https://nexaphone-website-latest.vercel.app/contact',
   },
   {
     id: 3,
-    title: 'Corporate Leadership Developement',
-    desc: 'CLD – Corporate Leadership Developement is a website that markets flagship events, corporate trainings and social media posts of the company.',
+    title: 'agency.ai | Digital Impact',
+    desc: 'Cagency.ai is a digital agency offering advertising, content marketing, social media, and AI-powered solutions to help brands grow and connect online.',
     image: '/assets/agency.png',
     tags: ['#nextjs', '#react', '#tailwind css'],
     link: '#',
@@ -86,7 +86,7 @@ const Project = () => {
             {/* Image */}
             <div className="proj-card-img-wrap">
               <img src={p.image} alt={p.title} className="proj-card-img" />
-             <a class="proj-card-link-btn" href="#" title="View project">
+             <a className="proj-card-link-btn" href={p.link} target="_blank" rel="noopener noreferrer" title="View project" onClick={e => e.stopPropagation()}>
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
     stroke="currentColor" stroke-width="1.7"
     stroke-linecap="round" stroke-linejoin="round">

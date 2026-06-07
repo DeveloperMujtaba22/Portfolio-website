@@ -19,9 +19,9 @@ const CARD_ACCENT = {
 };
 
 const SOCIAL_CONFIG = [
-  { key: "gh",  icon: "ti-brand-github",    label: "GitHub"    },
-  { key: "li",  icon: "ti-brand-linkedin",  label: "LinkedIn"  },
-  { key: "ig",  icon: "ti-brand-instagram", label: "Instagram" },
+  { key: "gh",  icon: "ti-brand-github",    label: "GitHub",    url: "https://github.com/DeveloperMujtaba22"        },
+  { key: "li",  icon: "ti-brand-linkedin",  label: "LinkedIn",  url: "https://www.linkedin.com/in/mujtaba-b50000363/https://www.linkedin.com/authwall?trk=bf&trkInfo=AQFERdBaQqyA_gAAAZ6jZCmYfmwjtmijMoJKK7s-E0zam9a_06xmRZ40D6ND0-mmktD6Kl0doK8AlErXFid_zkcuoLS4rQaZHJiyCC1wqYMHeRfnd3T9jA9fDbvuLxu3OyJbmYE=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmujtaba-b50000363%2F" },
+  { key: "ig",  icon: "ti-brand-instagram", label: "Instagram", url: "https://www.instagram.com/mujtabarasheed/?next=" },
 ];
 
 export default function Contact() {
@@ -168,7 +168,7 @@ export default function Contact() {
           <h1 className="contact-headline">
             LET'S
             <span style={{ color: ORANGE, display: "block" }}>
-             Contact.
+             Contact
               <span style={{
                 display: "inline-block", width: 20, height: 20,
                 background: DARK, marginLeft: 6,
@@ -178,7 +178,7 @@ export default function Contact() {
           </h1>
 
           <p style={{ marginTop: 10, fontSize: 15, color: "#666", maxWidth: 380, lineHeight: 1.6, marginBottom: 17 }}>
-            Have a revolutionary idea or just want to chat about tech? I'm just a message away.
+            
           </p>
 
           {/* Contact Cards */}
@@ -227,28 +227,32 @@ export default function Contact() {
             <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "2px", color: MUTED, textTransform: "uppercase" }}>
               Socials //
             </span>
-            {SOCIAL_CONFIG.map(({ key, icon, label }) => {
-              const hov = hoveredSocial === key;
-              return (
-                <div
-                  key={key}
-                  aria-label={label}
-                  onMouseEnter={() => setHoveredSocial(key)}
-                  onMouseLeave={() => setHoveredSocial(null)}
-                  style={{
-                    width: 40, height: 40, borderRadius: "50%",
-                    background: hov ? ORANGE : DARK,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    cursor: "pointer",
-                    transform: hov ? "translateY(-3px) scale(1.12)" : "translateY(0) scale(1)",
-                    boxShadow: hov ? `0 6px 16px ${ORANGE_GLOW}` : "none",
-                    transition: "background 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s",
-                  }}
-                >
-                  <i className={`ti ${icon}`} style={{ fontSize: 18, color: "#fff" }} aria-hidden="true" />
-                </div>
-              );
-            })}
+            {SOCIAL_CONFIG.map(({ key, icon, label, url }) => {
+  const hov = hoveredSocial === key;
+  return (
+    <a
+      key={key}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      onMouseEnter={() => setHoveredSocial(key)}
+      onMouseLeave={() => setHoveredSocial(null)}
+      style={{
+        width: 40, height: 40, borderRadius: "50%",
+        background: hov ? ORANGE : DARK,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        cursor: "pointer",
+        textDecoration: "none",
+        transform: hov ? "translateY(-3px) scale(1.12)" : "translateY(0) scale(1)",
+        boxShadow: hov ? `0 6px 16px ${ORANGE_GLOW}` : "none",
+        transition: "background 0.2s, transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s",
+      }}
+    >
+      <i className={`ti ${icon}`} style={{ fontSize: 18, color: "#fff" }} aria-hidden="true" />
+    </a>
+  );
+})}
           </div>
 
         </div>
@@ -340,7 +344,7 @@ export default function Contact() {
             }}
           >
             <i className="ti ti-send" style={{ fontSize: 17 }} aria-hidden="true" />
-            SEND DISPATCH
+            SEND 
           </button>
 
          

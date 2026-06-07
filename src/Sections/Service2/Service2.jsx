@@ -22,8 +22,7 @@ const Service = () => {
             My <span className="service-highlight">Services</span>
           </h2>
           <p className="service-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Duis lacus nunc, posuere in justo vulputate, bibendum sodales
+            Passionate about building beautiful interfaces, fast web applications, and secure backend systems using modern technologies to create seamless digital experiences.
           </p>
         </div>
 
